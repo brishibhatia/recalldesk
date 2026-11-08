@@ -21,9 +21,9 @@ The published requirement is a **public repository**. The checked pages do not s
 | Useful sample experience | 20 structured sample history events in [fixtures](../src/server/fixtures.ts) | Prepared; simulated storage does not satisfy Mainnet requirements |
 | Live continuity | Recommendation snapshot records recall source and evidence | **Pending.** After completion, sign in afresh and obtain a recommendation using actual Walrus recall evidence |
 | Reachable working demonstration | [Deployment artifacts](deployment.md), [runbook](demo-runbook.md), [screenshots](../artifacts/screenshots/) | **Public deployment pending.** Supply an authorized compatible Node/gRPC host and persistent PostgreSQL, then verify a complete deployed lifecycle |
-| Public repository | Source tree, lockfile, migration files, [notice](../NOTICE.md) | **Publication pending destination/access.** Review scoped secret scan and publish only the project to the intended repository. License choice is a separate team decision |
+| Public repository | [brishibhatia/recalldesk](https://github.com/brishibhatia/recalldesk), source, lockfile, migrations, [notice](../NOTICE.md) | **Published and confirmed public.** Scoped secret scan passed. Source reuse rights remain separate from visibility |
 | Published explanatory blog | [Reviewable blog draft](blog-draft.md), application `/blog` | **Publication pending destination/access.** Review actual live/evaluation status and copy, then publish at the intended destination |
-| Real 2–3 minute demo video | [Storyboard and recording instructions](demo-runbook.md) | Recording being prepared; verify the actual file before linking or uploading. No public video URL exists |
+| Real 2–3 minute demo video | [Actual recording in the public repository](https://github.com/brishibhatia/recalldesk/blob/main/artifacts/demo/recalldesk-demo.webm), [runbook](demo-runbook.md) | **Recorded and published:** 2:40.16, synthetic/sample providers clearly labeled; actual app state and corrected-outcome ranking inspected |
 | Submission form and identifiers | List below | **Pending user-owned details and submission authorization.** Never put private delegate material in the form |
 | Current rules and contradictions | Event page and rules checked 2026-11-08 | Recheck at submission time; unresolved wording remains recorded |
 
@@ -41,9 +41,9 @@ No personal account identifier is fabricated or committed here. The team must al
 - [ ] Fresh-session live recommendation cites the actual recalled evidence.
 - [ ] Production credentials remain server-side; public demo cannot write to live tenants or Mainnet.
 - [ ] Deployed login/demo, database, worker, and full case lifecycle verified.
-- [ ] Intended repository made public after scoped secret scan; reuse/license decision recorded separately.
+- [x] Intended repository made public after scoped secret scan; reuse/license decision recorded separately.
 - [ ] Blog reviewed and published with accurate integration and measurement claims.
-- [ ] Real video inspected, between two and three minutes, labeled honestly, and uploaded to an authorized location.
+- [x] Real video inspected, between two and three minutes, labeled honestly, and uploaded to the public project repository.
 - [ ] Current rule wording and account identifiers checked; submission explicitly authorized and completed by deadline.
 
 An accepted provider job, successful build, local recording, or draft blog does not satisfy the corresponding completed-storage, deployment, published-video, or published-blog requirement. If the deadline passes before these steps, continue the product work and describe the event as past.

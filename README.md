@@ -6,6 +6,8 @@ RecallDesk is a support workspace for merchants selling digital access or servic
 
 Built for **Total Recall — Track 2: Smart Agents for Real Life**. This repository is a working local application, not a claim of hackathon submission or live Mainnet readiness.
 
+Public source: **[brishibhatia/recalldesk](https://github.com/brishibhatia/recalldesk)**. Local workspace: `/home/rishibhatia/documents/track2`. The article and recorded walkthrough are published separately from the support backend; see the verification record for actual reachable links.
+
 ![RecallDesk case workspace](artifacts/screenshots/desktop-case.png)
 
 ## Current status
@@ -21,7 +23,7 @@ Built for **Total Recall — Track 2: Smart Agents for Real Life**. This reposit
 | Live adapters | Tatum native Sui gRPC, official Walrus Memory SDK, OpenAI structured outputs implemented |
 | Live verification | Pending credentials and an authorized merchant-owned memory account |
 | Confirmed Mainnet memories | **0**; no Mainnet writes have been performed during this build |
-| Deployment/publication | Node/Docker artifacts prepared; no public deployment or repository published |
+| Deployment/publication | Public repository published; Node/Docker backend artifacts prepared; public application hosting pending |
 
 See [verification](docs/verification.md) for current test results and [submission checklist](docs/submission-checklist.md) for the separate live requirements.
 

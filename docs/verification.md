@@ -64,3 +64,11 @@ See [submission checklist](submission-checklist.md) and [Mainnet evidence](mainn
 A staged source export without `node_modules`, `.next`, `.env.local` or local database files was installed with `npm ci`. It generated route types, migrated a separate PostgreSQL database, seeded and built successfully. It was then moved to `/tmp/recalldesk-clean-checkout-20261108` and built again outside the original workspace to avoid parent-lockfile resolution. npm emitted deprecated tooling/install-script notices but completed with zero reported audit vulnerabilities. Local database startup uses explicit embedded-Postgres symlink rehydration.
 
 The actual demo recording is [recalldesk-demo.webm](../artifacts/demo/recalldesk-demo.webm), approximately2:40 at1440×1000, with no voice audio. It shows the customer product restore, completed simulated outcome, superseded success, a new case selecting resend from the corrected evidence, invalid recipient, and actual fixture evaluation. The first recording attempt failed an assertion because the script observed the previous completed event before the correction committed; the script now waits for the exact failed outcome. Incomplete captures are ignored and not publication artifacts.
+
+Final media metadata: **160.16 seconds**, 1440×1000 VP9, 25fps. The final capture includes visible on-screen sample-provider captions. Screenshot frames were inspected, including the actual19-example decision with resend0.80 and relink0.73. The new checkout's server on port3002 returned health200, demo entry200 and a persisted26-case workspace (six active cases plus20 historical cases).
+
+### Public publication
+
+The repository was created and pushed to [github.com/brishibhatia/recalldesk](https://github.com/brishibhatia/recalldesk); GitHub confirmed `PUBLIC` visibility and a populated repository. Only project source, synthetic reports/screenshots and the inspected recording were included. No private environment files, runtime database, raw live artifacts or incomplete captures were published.
+
+The first article workflow failed at Pages configuration because it ran before Pages was enabled on the new repository. Pages has since been configured for workflow deployment. Final article reachability and independent CI outcome are recorded below after verification; no backend deployment is inferred from the static publication.

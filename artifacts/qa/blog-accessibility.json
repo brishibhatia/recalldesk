@@ -1,14 +1,5 @@
 {
-  "checkedAt": "2026-11-08T17:15:22.143Z",
-  "violations": [
-    {
-      "id": "scrollable-region-focusable",
-      "nodes": [
-        [
-          "pre"
-        ]
-      ]
-    }
-  ],
+  "checkedAt": "2026-11-08T17:16:01.054Z",
+  "violations": [],
   "overflow": false
 }

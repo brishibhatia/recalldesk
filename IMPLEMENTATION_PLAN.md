@@ -34,9 +34,9 @@ Specification received 2026-11-05. Implementation readiness and live/submission 
 
 ## External readiness (initial)
 
-- Tatum / Walrus / LLM credentials: checking only task-specific configured variables, never values.
+- Tatum / Walrus / LLM credentials: task-specific presence checks found none configured; never printed values.
 - Mainnet write authorization/account: not supplied. No live writes planned without it.
 - Deployment: connected Sites runtime lacks raw TCP; Node-compatible hosting and persistent PostgreSQL required.
-- Public repository/blog/submission: publication not authorized; prepare artifacts locally.
+- Public repository: published at `https://github.com/brishibhatia/recalldesk` under the November8 publication request. Blog workflow prepared; actual submission remains pending account identifiers and authorization.
 
 See docs/verification.md for commands and measured outcomes; docs/submission-checklist.md for external requirements.

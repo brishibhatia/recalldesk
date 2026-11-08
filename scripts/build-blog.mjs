@@ -36,7 +36,7 @@ for (const line of lines) {
   if (line.startsWith("```")) {
     flush();
     if (code) {
-      output.push(`<pre><code>${escape(code.join("\n"))}</code></pre>`);
+      output.push(`<pre tabindex="0" role="region" aria-label="Scoring formula"><code>${escape(code.join("\n"))}</code></pre>`);
       code = null;
     } else code = [];
     continue;
