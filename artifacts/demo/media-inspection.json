@@ -1,0 +1,13 @@
+{
+  "inspectedAt": "2026-11-08T17:17:32.285Z",
+  "file": "recalldesk-demo.webm",
+  "sha256": "28b5f671844552b0094716ff1f307b80a6907ff5bff092f11c4114cd43617637",
+  "bytes": 23952904,
+  "durationSeconds": 160.16,
+  "width": 1440,
+  "height": 1000,
+  "fps": 25,
+  "codec": "VP9",
+  "method": "FFmpeg 7.0.1 input metadata; extracted frame at 100 seconds visually inspected",
+  "captions": "Visible sample-provider and score-change text; no voice audio"
+}

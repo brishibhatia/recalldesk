@@ -72,3 +72,9 @@ Final media metadata: **160.16 seconds**, 1440×1000 VP9, 25fps. The final captu
 The repository was created and pushed to [github.com/brishibhatia/recalldesk](https://github.com/brishibhatia/recalldesk); GitHub confirmed `PUBLIC` visibility and a populated repository. Only project source, synthetic reports/screenshots and the inspected recording were included. No private environment files, runtime database, raw live artifacts or incomplete captures were published.
 
 The first article workflow failed at Pages configuration because it ran before Pages was enabled on the new repository. Pages has since been configured for workflow deployment. Final article reachability and independent CI outcome are recorded below after verification; no backend deployment is inferred from the static publication.
+
+- [Independent GitHub CI run](https://github.com/brishibhatia/recalldesk/actions/runs/42504077100): **passed**, including fresh npm install, PostgreSQL migrations/seed, lint, route type generation, unit/database tests, evaluation, scan, build, six browser tests and accessibility checks.
+- [Article deployment](https://github.com/brishibhatia/recalldesk/actions/runs/42504200065): **passed** after Pages configuration. Published at [brishibhatia.github.io/recalldesk](https://brishibhatia.github.io/recalldesk/).
+- The actual [video file](https://brishibhatia.github.io/recalldesk/recalldesk-demo.webm) is served by that static site. Its [local media inspection](../artifacts/demo/media-inspection.json) ties the measured duration to the file hash.
+- The separate article's automated mobile accessibility check also passed with zero detected violations and no page overflow: [report](../artifacts/qa/blog-accessibility.json).
+- A fresh unauthenticated Chromium context loaded the published article with HTTP200 and the actual video metadata (160.16seconds, 1440×1000): [public reachability report](../artifacts/qa/publication.json).

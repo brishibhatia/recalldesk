@@ -22,7 +22,7 @@ The published requirement is a **public repository**. The checked pages do not s
 | Live continuity | Recommendation snapshot records recall source and evidence | **Pending.** After completion, sign in afresh and obtain a recommendation using actual Walrus recall evidence |
 | Reachable working demonstration | [Deployment artifacts](deployment.md), [runbook](demo-runbook.md), [screenshots](../artifacts/screenshots/) | **Public deployment pending.** Supply an authorized compatible Node/gRPC host and persistent PostgreSQL, then verify a complete deployed lifecycle |
 | Public repository | [brishibhatia/recalldesk](https://github.com/brishibhatia/recalldesk), source, lockfile, migrations, [notice](../NOTICE.md) | **Published and confirmed public.** Scoped secret scan passed. Source reuse rights remain separate from visibility |
-| Published explanatory blog | [Reviewable blog draft](blog-draft.md), application `/blog` | **Publication pending destination/access.** Review actual live/evaluation status and copy, then publish at the intended destination |
+| Published explanatory blog | [Published article and walkthrough](https://brishibhatia.github.io/recalldesk/), [article source](blog-draft.md) | **Published.** Static article explicitly labels synthetic evaluation and pending live providers; this is not the hosted support backend |
 | Real 2–3 minute demo video | [Actual recording in the public repository](https://github.com/brishibhatia/recalldesk/blob/main/artifacts/demo/recalldesk-demo.webm), [runbook](demo-runbook.md) | **Recorded and published:** 2:40.16, synthetic/sample providers clearly labeled; actual app state and corrected-outcome ranking inspected |
 | Submission form and identifiers | List below | **Pending user-owned details and submission authorization.** Never put private delegate material in the form |
 | Current rules and contradictions | Event page and rules checked 2026-11-08 | Recheck at submission time; unresolved wording remains recorded |
@@ -35,14 +35,14 @@ No personal account identifier is fabricated or committed here. The team must al
 
 ## Final release review
 
-- [ ] All local acceptance checks reconciled in [verification](verification.md), with failures and environment limitations preserved.
+- [x] All local acceptance checks reconciled in [verification](verification.md), with failures and environment limitations preserved.
 - [ ] Live Tatum receipt successfully checked in the deployed configuration.
 - [ ] Ten or more distinct Mainnet events completed; reviewed evidence has actual account, job, blob references where returned, and timestamps.
 - [ ] Fresh-session live recommendation cites the actual recalled evidence.
 - [ ] Production credentials remain server-side; public demo cannot write to live tenants or Mainnet.
 - [ ] Deployed login/demo, database, worker, and full case lifecycle verified.
 - [x] Intended repository made public after scoped secret scan; reuse/license decision recorded separately.
-- [ ] Blog reviewed and published with accurate integration and measurement claims.
+- [x] Blog reviewed and published with accurate integration and measurement claims.
 - [x] Real video inspected, between two and three minutes, labeled honestly, and uploaded to the public project repository.
 - [ ] Current rule wording and account identifiers checked; submission explicitly authorized and completed by deadline.
 
