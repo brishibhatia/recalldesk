@@ -1,0 +1,8 @@
+{
+  "status": "pending-live-verification",
+  "network": "mainnet",
+  "confirmedCount": 0,
+  "events": [],
+  "reason": "No Tatum or Walrus credentials, merchant account or Mainnet write authorization supplied during this build. No real Mainnet memories have been written.",
+  "actualEvidenceExport": "The opt-in mainnet:seed command writes actual redacted completed-job evidence to ignored artifacts/live/mainnet-evidence.json for team review before publication."
+}

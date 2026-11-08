@@ -1,0 +1,50 @@
+services:
+  postgres:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_USER: recalldesk
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in the shell or Compose .env}
+      POSTGRES_DB: recalldesk
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U recalldesk -d recalldesk"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+  migrate:
+    build: .
+    env_file: .env.local
+    environment:
+      DATABASE_URL: postgresql://recalldesk:${POSTGRES_PASSWORD}@postgres:5432/recalldesk
+    command: [npm, run, db:migrate]
+    healthcheck:
+      disable: true
+    depends_on:
+      postgres:
+        condition: service_healthy
+  web:
+    build: .
+    env_file: .env.local
+    environment:
+      DATABASE_URL: postgresql://recalldesk:${POSTGRES_PASSWORD}@postgres:5432/recalldesk
+    ports: ["127.0.0.1:3000:3000"]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    restart: unless-stopped
+  worker:
+    build: .
+    env_file: .env.local
+    environment:
+      DATABASE_URL: postgresql://recalldesk:${POSTGRES_PASSWORD}@postgres:5432/recalldesk
+    command: [npm, run, worker]
+    healthcheck:
+      disable: true
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    restart: unless-stopped
+volumes:
+  postgres_data:

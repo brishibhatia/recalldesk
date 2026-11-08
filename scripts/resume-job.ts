@@ -1,0 +1,11 @@
+import { and,eq } from "drizzle-orm";
+import { z } from "zod";
+import { db,pool } from "../src/db";
+import { jobs,merchants } from "../src/db/schema";
+import { mode,required } from "../src/server/config";
+const id=z.string().uuid().parse(process.argv[2]);
+const [row]=await db.select().from(jobs).innerJoin(merchants,eq(jobs.merchantId,merchants.id)).where(and(eq(jobs.id,id),eq(merchants.mode,mode())));
+if(!row||!['uncertain','failed','retrying'].includes(row.memory_jobs.status))throw new Error("Only a failed/uncertain/retrying job in this execution mode may be resumed.");
+if(mode()==="live"&&(row.merchants.id!==required("LIVE_MERCHANT_ID")||!process.argv.includes("--confirm")))throw new Error("Live retry requires the configured merchant and explicit --confirm after provider diagnosis.");
+await db.update(jobs).set({status:row.memory_jobs.providerJobId?"accepted":"queued",nextRunAt:new Date(),attempts:0,error:null,leaseUntil:null,leaseToken:null}).where(eq(jobs.id,id));
+console.log("Job resumed with its original logical event, payload, operation key and accepted job ID. No new business outcome created.");await pool.end();

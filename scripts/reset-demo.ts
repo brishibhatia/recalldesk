@@ -1,0 +1,11 @@
+import { and,eq } from "drizzle-orm";
+import { db,pool } from "../src/db";
+import { demoSessions,merchants } from "../src/db/schema";
+import { mode } from "../src/server/config";
+import { z } from "zod";
+const merchantId=z.string().uuid().parse(process.argv[2]);
+if(mode()!=="demo")throw new Error("Demo reset is disabled in live mode.");
+const [merchant]=await db.select().from(merchants).where(and(eq(merchants.id,merchantId),eq(merchants.mode,"demo")));
+if(!merchant)throw new Error("That demo workspace was not found.");
+await db.delete(demoSessions).where(eq(demoSessions.merchantId,merchantId));
+console.log("Revoked this demo workspace's sessions. Re-entering creates a clean isolated clone. No business records or remote memories were deleted.");await pool.end();

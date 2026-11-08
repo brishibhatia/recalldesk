@@ -1,0 +1,119 @@
+{
+  "checkedAt": "2026-11-08T10:15:50.859Z",
+  "baseURL": "http://localhost:3000",
+  "scope": "Automated WCAG 2/2.1 A/AA axe checks; not an accessibility certification",
+  "reports": [
+    {
+      "viewport": "desktop",
+      "screen": "entry",
+      "screenshot": "artifacts/qa/desktop-entry.png",
+      "horizontalOverflow": false,
+      "violations": []
+    },
+    {
+      "viewport": "desktop",
+      "screen": "inbox",
+      "screenshot": "artifacts/qa/desktop-inbox.png",
+      "horizontalOverflow": false,
+      "violations": []
+    },
+    {
+      "viewport": "desktop",
+      "screen": "case-comparison",
+      "screenshot": "artifacts/qa/desktop-case-comparison.png",
+      "horizontalOverflow": false,
+      "violations": []
+    },
+    {
+      "viewport": "desktop",
+      "screen": "evidence",
+      "screenshot": "artifacts/qa/desktop-evidence.png",
+      "horizontalOverflow": false,
+      "violations": []
+    },
+    {
+      "viewport": "desktop",
+      "screen": "memory",
+      "screenshot": "artifacts/qa/desktop-memory.png",
+      "horizontalOverflow": false,
+      "violations": []
+    },
+    {
+      "viewport": "desktop",
+      "screen": "evaluation-empty",
+      "screenshot": "artifacts/qa/desktop-evaluation-empty.png",
+      "horizontalOverflow": false,
+      "violations": []
+    },
+    {
+      "viewport": "desktop",
+      "screen": "evaluation",
+      "screenshot": "artifacts/qa/desktop-evaluation.png",
+      "horizontalOverflow": false,
+      "violations": []
+    },
+    {
+      "viewport": "desktop",
+      "screen": "settings",
+      "screenshot": "artifacts/qa/desktop-settings.png",
+      "horizontalOverflow": false,
+      "violations": []
+    },
+    {
+      "viewport": "mobile",
+      "screen": "entry",
+      "screenshot": "artifacts/qa/mobile-entry.png",
+      "horizontalOverflow": false,
+      "violations": []
+    },
+    {
+      "viewport": "mobile",
+      "screen": "inbox",
+      "screenshot": "artifacts/qa/mobile-inbox.png",
+      "horizontalOverflow": false,
+      "violations": []
+    },
+    {
+      "viewport": "mobile",
+      "screen": "case-comparison",
+      "screenshot": "artifacts/qa/mobile-case-comparison.png",
+      "horizontalOverflow": false,
+      "violations": []
+    },
+    {
+      "viewport": "mobile",
+      "screen": "evidence",
+      "screenshot": "artifacts/qa/mobile-evidence.png",
+      "horizontalOverflow": false,
+      "violations": []
+    },
+    {
+      "viewport": "mobile",
+      "screen": "memory",
+      "screenshot": "artifacts/qa/mobile-memory.png",
+      "horizontalOverflow": false,
+      "violations": []
+    },
+    {
+      "viewport": "mobile",
+      "screen": "evaluation-empty",
+      "screenshot": "artifacts/qa/mobile-evaluation-empty.png",
+      "horizontalOverflow": false,
+      "violations": []
+    },
+    {
+      "viewport": "mobile",
+      "screen": "evaluation",
+      "screenshot": "artifacts/qa/mobile-evaluation.png",
+      "horizontalOverflow": false,
+      "violations": []
+    },
+    {
+      "viewport": "mobile",
+      "screen": "settings",
+      "screenshot": "artifacts/qa/mobile-settings.png",
+      "horizontalOverflow": false,
+      "violations": []
+    }
+  ]
+}

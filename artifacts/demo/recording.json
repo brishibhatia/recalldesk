@@ -1,0 +1,55 @@
+{
+  "recordedAt": "2026-11-08T10:45:48.064Z",
+  "workflowElapsedSeconds": 166.975,
+  "complete": true,
+  "mode": "synthetic-demo",
+  "audio": "none; on-screen captions",
+  "freshSession": "Full page reload and new case; separate automated browser test also covers a new browser context",
+  "worker": "Authenticated session-scoped worker ticks using the real persistent outbox",
+  "chapters": [
+    {
+      "seconds": 10,
+      "text": "0:00 · The customer has a paid order, but the controlled product is locked."
+    },
+    {
+      "seconds": 18,
+      "text": "Payment checks bind network, execution, asset, amount, recipient and buyer to this order. This receipt is simulated."
+    },
+    {
+      "seconds": 31,
+      "text": "0:30 · Same policy and payment. Failed refreshes lower its score; recalled relink outcomes change the recommendation."
+    },
+    {
+      "seconds": 46,
+      "text": "Approval executes one idempotent entitlement change. The same customer can now download the protected workbook."
+    },
+    {
+      "seconds": 70,
+      "text": "1:05 · Merchant confirmation queues an outcome. Accepted is not completed. Demo storage is local, not Mainnet."
+    },
+    {
+      "seconds": 74,
+      "text": "The outcome completed. Its logical event and sample storage reference remain inspectable after the request ends."
+    },
+    {
+      "seconds": 88,
+      "text": "The merchant corrects that outcome: the issue returned. The old success is superseded, never counted twice."
+    },
+    {
+      "seconds": 97,
+      "text": "1:35 · Fresh case and page session. The corrected relink failure changes its score from 0.80 to 0.73; resend now leads at 0.80."
+    },
+    {
+      "seconds": 111,
+      "text": "Judge evidence connects the payment, current policy, actual recalled IDs, scores and completed writes. Export omits customer text and access secrets."
+    },
+    {
+      "seconds": 126,
+      "text": "2:05 · A legitimate-looking receipt for a different recipient fails. Provider failure likewise stays unverified."
+    },
+    {
+      "seconds": 140,
+      "text": "Measured fixture evaluation: baseline 13/16, memory 16/16. Small synthetic dataset; live-model and Mainnet verification remain separate and pending."
+    }
+  ]
+}

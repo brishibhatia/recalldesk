@@ -1,0 +1,12 @@
+import { and,eq } from "drizzle-orm";
+import { db,pool } from "../src/db";
+import { merchants } from "../src/db/schema";
+import { checkProviders } from "../src/server/readiness";
+import { mode,required } from "../src/server/config";
+if(mode()!=="live"||!process.argv.includes("--live"))throw new Error("Read-only live checks are opt-in: set APP_MODE=live and pass --live.");
+const merchantId=required("LIVE_MERCHANT_ID");
+const [merchant]=await db.select().from(merchants).where(and(eq(merchants.id,merchantId),eq(merchants.mode,"live")));
+if(!merchant)throw new Error("Provision the configured live merchant first.");
+const result=await checkProviders({merchantId,actor:"integration-check",mode:"live",role:"operator"});
+console.log(JSON.stringify(result,null,2));await pool.end();
+if(result.providers.some(p=>!["live","configured"].includes(p.state)))process.exitCode=1;

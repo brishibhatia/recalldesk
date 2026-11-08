@@ -1,0 +1,482 @@
+{
+  "learning": [
+    {
+      "event": {
+        "schemaVersion": 1,
+        "logicalEventId": "20000000-0000-4000-8000-000000000001",
+        "merchantId": "10000000-0000-4000-8000-000000000001",
+        "caseId": "20000000-0000-4000-8000-000000000100",
+        "caseRef": "TRAIN-1",
+        "attemptId": "20000000-0000-4000-8000-000000000200",
+        "issue": "access",
+        "productVersion": "studio-2.1",
+        "remedy": "refresh",
+        "outcome": "failed",
+        "confirmation": "merchant",
+        "policyVersion": 1,
+        "policyEffectiveAt": "2026-10-20T00:00:00.000Z",
+        "observedAt": "2026-10-29T12:00:00.000Z",
+        "eventCreatedAt": "2026-10-30T12:00:00.000Z",
+        "paymentRef": null,
+        "supersedesEventId": null,
+        "provenance": "synthetic-demo"
+      },
+      "providerId": "eval:20000000-0000-4000-8000-000000000001",
+      "text": "{\"schemaVersion\":1,\"logicalEventId\":\"20000000-0000-4000-8000-000000000001\",\"merchantId\":\"10000000-0000-4000-8000-000000000001\",\"caseId\":\"20000000-0000-4000-8000-000000000100\",\"caseRef\":\"TRAIN-1\",\"attemptId\":\"20000000-0000-4000-8000-000000000200\",\"issue\":\"access\",\"productVersion\":\"studio-2.1\",\"remedy\":\"refresh\",\"outcome\":\"failed\",\"confirmation\":\"merchant\",\"policyVersion\":1,\"policyEffectiveAt\":\"2026-10-20T00:00:00.000Z\",\"observedAt\":\"2026-10-29T12:00:00.000Z\",\"eventCreatedAt\":\"2026-10-30T12:00:00.000Z\",\"paymentRef\":null,\"supersedesEventId\":null,\"provenance\":\"synthetic-demo\"}",
+      "source": "sample-memory"
+    },
+    {
+      "event": {
+        "schemaVersion": 1,
+        "logicalEventId": "20000000-0000-4000-8000-000000000002",
+        "merchantId": "10000000-0000-4000-8000-000000000001",
+        "caseId": "20000000-0000-4000-8000-000000000101",
+        "caseRef": "TRAIN-2",
+        "attemptId": "20000000-0000-4000-8000-000000000201",
+        "issue": "access",
+        "productVersion": "studio-2.1",
+        "remedy": "refresh",
+        "outcome": "failed",
+        "confirmation": "merchant",
+        "policyVersion": 1,
+        "policyEffectiveAt": "2026-10-20T00:00:00.000Z",
+        "observedAt": "2026-10-29T12:00:00.000Z",
+        "eventCreatedAt": "2026-10-30T12:00:00.000Z",
+        "paymentRef": null,
+        "supersedesEventId": null,
+        "provenance": "synthetic-demo"
+      },
+      "providerId": "eval:20000000-0000-4000-8000-000000000002",
+      "text": "{\"schemaVersion\":1,\"logicalEventId\":\"20000000-0000-4000-8000-000000000002\",\"merchantId\":\"10000000-0000-4000-8000-000000000001\",\"caseId\":\"20000000-0000-4000-8000-000000000101\",\"caseRef\":\"TRAIN-2\",\"attemptId\":\"20000000-0000-4000-8000-000000000201\",\"issue\":\"access\",\"productVersion\":\"studio-2.1\",\"remedy\":\"refresh\",\"outcome\":\"failed\",\"confirmation\":\"merchant\",\"policyVersion\":1,\"policyEffectiveAt\":\"2026-10-20T00:00:00.000Z\",\"observedAt\":\"2026-10-29T12:00:00.000Z\",\"eventCreatedAt\":\"2026-10-30T12:00:00.000Z\",\"paymentRef\":null,\"supersedesEventId\":null,\"provenance\":\"synthetic-demo\"}",
+      "source": "sample-memory"
+    },
+    {
+      "event": {
+        "schemaVersion": 1,
+        "logicalEventId": "20000000-0000-4000-8000-000000000003",
+        "merchantId": "10000000-0000-4000-8000-000000000001",
+        "caseId": "20000000-0000-4000-8000-000000000102",
+        "caseRef": "TRAIN-3",
+        "attemptId": "20000000-0000-4000-8000-000000000202",
+        "issue": "access",
+        "productVersion": "studio-2.1",
+        "remedy": "refresh",
+        "outcome": "failed",
+        "confirmation": "merchant",
+        "policyVersion": 1,
+        "policyEffectiveAt": "2026-10-20T00:00:00.000Z",
+        "observedAt": "2026-10-29T12:00:00.000Z",
+        "eventCreatedAt": "2026-10-30T12:00:00.000Z",
+        "paymentRef": null,
+        "supersedesEventId": null,
+        "provenance": "synthetic-demo"
+      },
+      "providerId": "eval:20000000-0000-4000-8000-000000000003",
+      "text": "{\"schemaVersion\":1,\"logicalEventId\":\"20000000-0000-4000-8000-000000000003\",\"merchantId\":\"10000000-0000-4000-8000-000000000001\",\"caseId\":\"20000000-0000-4000-8000-000000000102\",\"caseRef\":\"TRAIN-3\",\"attemptId\":\"20000000-0000-4000-8000-000000000202\",\"issue\":\"access\",\"productVersion\":\"studio-2.1\",\"remedy\":\"refresh\",\"outcome\":\"failed\",\"confirmation\":\"merchant\",\"policyVersion\":1,\"policyEffectiveAt\":\"2026-10-20T00:00:00.000Z\",\"observedAt\":\"2026-10-29T12:00:00.000Z\",\"eventCreatedAt\":\"2026-10-30T12:00:00.000Z\",\"paymentRef\":null,\"supersedesEventId\":null,\"provenance\":\"synthetic-demo\"}",
+      "source": "sample-memory"
+    },
+    {
+      "event": {
+        "schemaVersion": 1,
+        "logicalEventId": "20000000-0000-4000-8000-000000000004",
+        "merchantId": "10000000-0000-4000-8000-000000000001",
+        "caseId": "20000000-0000-4000-8000-000000000103",
+        "caseRef": "TRAIN-4",
+        "attemptId": "20000000-0000-4000-8000-000000000203",
+        "issue": "access",
+        "productVersion": "studio-2.1",
+        "remedy": "refresh",
+        "outcome": "failed",
+        "confirmation": "merchant",
+        "policyVersion": 1,
+        "policyEffectiveAt": "2026-10-20T00:00:00.000Z",
+        "observedAt": "2026-10-29T12:00:00.000Z",
+        "eventCreatedAt": "2026-10-30T12:00:00.000Z",
+        "paymentRef": null,
+        "supersedesEventId": null,
+        "provenance": "synthetic-demo"
+      },
+      "providerId": "eval:20000000-0000-4000-8000-000000000004",
+      "text": "{\"schemaVersion\":1,\"logicalEventId\":\"20000000-0000-4000-8000-000000000004\",\"merchantId\":\"10000000-0000-4000-8000-000000000001\",\"caseId\":\"20000000-0000-4000-8000-000000000103\",\"caseRef\":\"TRAIN-4\",\"attemptId\":\"20000000-0000-4000-8000-000000000203\",\"issue\":\"access\",\"productVersion\":\"studio-2.1\",\"remedy\":\"refresh\",\"outcome\":\"failed\",\"confirmation\":\"merchant\",\"policyVersion\":1,\"policyEffectiveAt\":\"2026-10-20T00:00:00.000Z\",\"observedAt\":\"2026-10-29T12:00:00.000Z\",\"eventCreatedAt\":\"2026-10-30T12:00:00.000Z\",\"paymentRef\":null,\"supersedesEventId\":null,\"provenance\":\"synthetic-demo\"}",
+      "source": "sample-memory"
+    },
+    {
+      "event": {
+        "schemaVersion": 1,
+        "logicalEventId": "20000000-0000-4000-8000-000000000005",
+        "merchantId": "10000000-0000-4000-8000-000000000001",
+        "caseId": "20000000-0000-4000-8000-000000000104",
+        "caseRef": "TRAIN-5",
+        "attemptId": "20000000-0000-4000-8000-000000000204",
+        "issue": "access",
+        "productVersion": "studio-2.1",
+        "remedy": "refresh",
+        "outcome": "failed",
+        "confirmation": "merchant",
+        "policyVersion": 1,
+        "policyEffectiveAt": "2026-10-20T00:00:00.000Z",
+        "observedAt": "2026-10-29T12:00:00.000Z",
+        "eventCreatedAt": "2026-10-30T12:00:00.000Z",
+        "paymentRef": null,
+        "supersedesEventId": null,
+        "provenance": "synthetic-demo"
+      },
+      "providerId": "eval:20000000-0000-4000-8000-000000000005",
+      "text": "{\"schemaVersion\":1,\"logicalEventId\":\"20000000-0000-4000-8000-000000000005\",\"merchantId\":\"10000000-0000-4000-8000-000000000001\",\"caseId\":\"20000000-0000-4000-8000-000000000104\",\"caseRef\":\"TRAIN-5\",\"attemptId\":\"20000000-0000-4000-8000-000000000204\",\"issue\":\"access\",\"productVersion\":\"studio-2.1\",\"remedy\":\"refresh\",\"outcome\":\"failed\",\"confirmation\":\"merchant\",\"policyVersion\":1,\"policyEffectiveAt\":\"2026-10-20T00:00:00.000Z\",\"observedAt\":\"2026-10-29T12:00:00.000Z\",\"eventCreatedAt\":\"2026-10-30T12:00:00.000Z\",\"paymentRef\":null,\"supersedesEventId\":null,\"provenance\":\"synthetic-demo\"}",
+      "source": "sample-memory"
+    },
+    {
+      "event": {
+        "schemaVersion": 1,
+        "logicalEventId": "20000000-0000-4000-8000-000000000006",
+        "merchantId": "10000000-0000-4000-8000-000000000001",
+        "caseId": "20000000-0000-4000-8000-000000000105",
+        "caseRef": "TRAIN-6",
+        "attemptId": "20000000-0000-4000-8000-000000000205",
+        "issue": "access",
+        "productVersion": "studio-2.1",
+        "remedy": "relink",
+        "outcome": "resolved",
+        "confirmation": "merchant",
+        "policyVersion": 1,
+        "policyEffectiveAt": "2026-10-20T00:00:00.000Z",
+        "observedAt": "2026-10-29T12:00:00.000Z",
+        "eventCreatedAt": "2026-10-30T12:00:00.000Z",
+        "paymentRef": null,
+        "supersedesEventId": null,
+        "provenance": "synthetic-demo"
+      },
+      "providerId": "eval:20000000-0000-4000-8000-000000000006",
+      "text": "{\"schemaVersion\":1,\"logicalEventId\":\"20000000-0000-4000-8000-000000000006\",\"merchantId\":\"10000000-0000-4000-8000-000000000001\",\"caseId\":\"20000000-0000-4000-8000-000000000105\",\"caseRef\":\"TRAIN-6\",\"attemptId\":\"20000000-0000-4000-8000-000000000205\",\"issue\":\"access\",\"productVersion\":\"studio-2.1\",\"remedy\":\"relink\",\"outcome\":\"resolved\",\"confirmation\":\"merchant\",\"policyVersion\":1,\"policyEffectiveAt\":\"2026-10-20T00:00:00.000Z\",\"observedAt\":\"2026-10-29T12:00:00.000Z\",\"eventCreatedAt\":\"2026-10-30T12:00:00.000Z\",\"paymentRef\":null,\"supersedesEventId\":null,\"provenance\":\"synthetic-demo\"}",
+      "source": "sample-memory"
+    },
+    {
+      "event": {
+        "schemaVersion": 1,
+        "logicalEventId": "20000000-0000-4000-8000-000000000007",
+        "merchantId": "10000000-0000-4000-8000-000000000001",
+        "caseId": "20000000-0000-4000-8000-000000000106",
+        "caseRef": "TRAIN-7",
+        "attemptId": "20000000-0000-4000-8000-000000000206",
+        "issue": "access",
+        "productVersion": "studio-2.1",
+        "remedy": "relink",
+        "outcome": "resolved",
+        "confirmation": "merchant",
+        "policyVersion": 1,
+        "policyEffectiveAt": "2026-10-20T00:00:00.000Z",
+        "observedAt": "2026-10-29T12:00:00.000Z",
+        "eventCreatedAt": "2026-10-30T12:00:00.000Z",
+        "paymentRef": null,
+        "supersedesEventId": null,
+        "provenance": "synthetic-demo"
+      },
+      "providerId": "eval:20000000-0000-4000-8000-000000000007",
+      "text": "{\"schemaVersion\":1,\"logicalEventId\":\"20000000-0000-4000-8000-000000000007\",\"merchantId\":\"10000000-0000-4000-8000-000000000001\",\"caseId\":\"20000000-0000-4000-8000-000000000106\",\"caseRef\":\"TRAIN-7\",\"attemptId\":\"20000000-0000-4000-8000-000000000206\",\"issue\":\"access\",\"productVersion\":\"studio-2.1\",\"remedy\":\"relink\",\"outcome\":\"resolved\",\"confirmation\":\"merchant\",\"policyVersion\":1,\"policyEffectiveAt\":\"2026-10-20T00:00:00.000Z\",\"observedAt\":\"2026-10-29T12:00:00.000Z\",\"eventCreatedAt\":\"2026-10-30T12:00:00.000Z\",\"paymentRef\":null,\"supersedesEventId\":null,\"provenance\":\"synthetic-demo\"}",
+      "source": "sample-memory"
+    },
+    {
+      "event": {
+        "schemaVersion": 1,
+        "logicalEventId": "20000000-0000-4000-8000-000000000008",
+        "merchantId": "10000000-0000-4000-8000-000000000001",
+        "caseId": "20000000-0000-4000-8000-000000000107",
+        "caseRef": "TRAIN-8",
+        "attemptId": "20000000-0000-4000-8000-000000000207",
+        "issue": "access",
+        "productVersion": "studio-2.1",
+        "remedy": "relink",
+        "outcome": "resolved",
+        "confirmation": "merchant",
+        "policyVersion": 1,
+        "policyEffectiveAt": "2026-10-20T00:00:00.000Z",
+        "observedAt": "2026-10-29T12:00:00.000Z",
+        "eventCreatedAt": "2026-10-30T12:00:00.000Z",
+        "paymentRef": null,
+        "supersedesEventId": null,
+        "provenance": "synthetic-demo"
+      },
+      "providerId": "eval:20000000-0000-4000-8000-000000000008",
+      "text": "{\"schemaVersion\":1,\"logicalEventId\":\"20000000-0000-4000-8000-000000000008\",\"merchantId\":\"10000000-0000-4000-8000-000000000001\",\"caseId\":\"20000000-0000-4000-8000-000000000107\",\"caseRef\":\"TRAIN-8\",\"attemptId\":\"20000000-0000-4000-8000-000000000207\",\"issue\":\"access\",\"productVersion\":\"studio-2.1\",\"remedy\":\"relink\",\"outcome\":\"resolved\",\"confirmation\":\"merchant\",\"policyVersion\":1,\"policyEffectiveAt\":\"2026-10-20T00:00:00.000Z\",\"observedAt\":\"2026-10-29T12:00:00.000Z\",\"eventCreatedAt\":\"2026-10-30T12:00:00.000Z\",\"paymentRef\":null,\"supersedesEventId\":null,\"provenance\":\"synthetic-demo\"}",
+      "source": "sample-memory"
+    },
+    {
+      "event": {
+        "schemaVersion": 1,
+        "logicalEventId": "20000000-0000-4000-8000-000000000009",
+        "merchantId": "10000000-0000-4000-8000-000000000001",
+        "caseId": "20000000-0000-4000-8000-000000000108",
+        "caseRef": "TRAIN-9",
+        "attemptId": "20000000-0000-4000-8000-000000000208",
+        "issue": "access",
+        "productVersion": "studio-2.1",
+        "remedy": "relink",
+        "outcome": "resolved",
+        "confirmation": "merchant",
+        "policyVersion": 1,
+        "policyEffectiveAt": "2026-10-20T00:00:00.000Z",
+        "observedAt": "2026-10-29T12:00:00.000Z",
+        "eventCreatedAt": "2026-10-30T12:00:00.000Z",
+        "paymentRef": null,
+        "supersedesEventId": null,
+        "provenance": "synthetic-demo"
+      },
+      "providerId": "eval:20000000-0000-4000-8000-000000000009",
+      "text": "{\"schemaVersion\":1,\"logicalEventId\":\"20000000-0000-4000-8000-000000000009\",\"merchantId\":\"10000000-0000-4000-8000-000000000001\",\"caseId\":\"20000000-0000-4000-8000-000000000108\",\"caseRef\":\"TRAIN-9\",\"attemptId\":\"20000000-0000-4000-8000-000000000208\",\"issue\":\"access\",\"productVersion\":\"studio-2.1\",\"remedy\":\"relink\",\"outcome\":\"resolved\",\"confirmation\":\"merchant\",\"policyVersion\":1,\"policyEffectiveAt\":\"2026-10-20T00:00:00.000Z\",\"observedAt\":\"2026-10-29T12:00:00.000Z\",\"eventCreatedAt\":\"2026-10-30T12:00:00.000Z\",\"paymentRef\":null,\"supersedesEventId\":null,\"provenance\":\"synthetic-demo\"}",
+      "source": "sample-memory"
+    },
+    {
+      "event": {
+        "schemaVersion": 1,
+        "logicalEventId": "20000000-0000-4000-8000-000000000010",
+        "merchantId": "10000000-0000-4000-8000-000000000001",
+        "caseId": "20000000-0000-4000-8000-000000000109",
+        "caseRef": "TRAIN-10",
+        "attemptId": "20000000-0000-4000-8000-000000000209",
+        "issue": "access",
+        "productVersion": "studio-2.1",
+        "remedy": "relink",
+        "outcome": "resolved",
+        "confirmation": "merchant",
+        "policyVersion": 1,
+        "policyEffectiveAt": "2026-10-20T00:00:00.000Z",
+        "observedAt": "2026-10-29T12:00:00.000Z",
+        "eventCreatedAt": "2026-10-30T12:00:00.000Z",
+        "paymentRef": null,
+        "supersedesEventId": null,
+        "provenance": "synthetic-demo"
+      },
+      "providerId": "eval:20000000-0000-4000-8000-000000000010",
+      "text": "{\"schemaVersion\":1,\"logicalEventId\":\"20000000-0000-4000-8000-000000000010\",\"merchantId\":\"10000000-0000-4000-8000-000000000001\",\"caseId\":\"20000000-0000-4000-8000-000000000109\",\"caseRef\":\"TRAIN-10\",\"attemptId\":\"20000000-0000-4000-8000-000000000209\",\"issue\":\"access\",\"productVersion\":\"studio-2.1\",\"remedy\":\"relink\",\"outcome\":\"resolved\",\"confirmation\":\"merchant\",\"policyVersion\":1,\"policyEffectiveAt\":\"2026-10-20T00:00:00.000Z\",\"observedAt\":\"2026-10-29T12:00:00.000Z\",\"eventCreatedAt\":\"2026-10-30T12:00:00.000Z\",\"paymentRef\":null,\"supersedesEventId\":null,\"provenance\":\"synthetic-demo\"}",
+      "source": "sample-memory"
+    },
+    {
+      "event": {
+        "schemaVersion": 1,
+        "logicalEventId": "20000000-0000-4000-8000-000000000011",
+        "merchantId": "10000000-0000-4000-8000-000000000001",
+        "caseId": "20000000-0000-4000-8000-000000000110",
+        "caseRef": "TRAIN-11",
+        "attemptId": "20000000-0000-4000-8000-000000000210",
+        "issue": "access",
+        "productVersion": "studio-2.1",
+        "remedy": "relink",
+        "outcome": "resolved",
+        "confirmation": "merchant",
+        "policyVersion": 1,
+        "policyEffectiveAt": "2026-10-20T00:00:00.000Z",
+        "observedAt": "2026-10-29T12:00:00.000Z",
+        "eventCreatedAt": "2026-10-30T12:00:00.000Z",
+        "paymentRef": null,
+        "supersedesEventId": null,
+        "provenance": "synthetic-demo"
+      },
+      "providerId": "eval:20000000-0000-4000-8000-000000000011",
+      "text": "{\"schemaVersion\":1,\"logicalEventId\":\"20000000-0000-4000-8000-000000000011\",\"merchantId\":\"10000000-0000-4000-8000-000000000001\",\"caseId\":\"20000000-0000-4000-8000-000000000110\",\"caseRef\":\"TRAIN-11\",\"attemptId\":\"20000000-0000-4000-8000-000000000210\",\"issue\":\"access\",\"productVersion\":\"studio-2.1\",\"remedy\":\"relink\",\"outcome\":\"resolved\",\"confirmation\":\"merchant\",\"policyVersion\":1,\"policyEffectiveAt\":\"2026-10-20T00:00:00.000Z\",\"observedAt\":\"2026-10-29T12:00:00.000Z\",\"eventCreatedAt\":\"2026-10-30T12:00:00.000Z\",\"paymentRef\":null,\"supersedesEventId\":null,\"provenance\":\"synthetic-demo\"}",
+      "source": "sample-memory"
+    },
+    {
+      "event": {
+        "schemaVersion": 1,
+        "logicalEventId": "20000000-0000-4000-8000-000000000012",
+        "merchantId": "10000000-0000-4000-8000-000000000001",
+        "caseId": "20000000-0000-4000-8000-000000000111",
+        "caseRef": "TRAIN-12",
+        "attemptId": "20000000-0000-4000-8000-000000000211",
+        "issue": "access",
+        "productVersion": "studio-2.1",
+        "remedy": "legacy_reset",
+        "outcome": "resolved",
+        "confirmation": "merchant",
+        "policyVersion": 1,
+        "policyEffectiveAt": "2026-10-20T00:00:00.000Z",
+        "observedAt": "2026-10-29T12:00:00.000Z",
+        "eventCreatedAt": "2026-10-30T12:00:00.000Z",
+        "paymentRef": null,
+        "supersedesEventId": null,
+        "provenance": "synthetic-demo"
+      },
+      "providerId": "eval:20000000-0000-4000-8000-000000000012",
+      "text": "{\"schemaVersion\":1,\"logicalEventId\":\"20000000-0000-4000-8000-000000000012\",\"merchantId\":\"10000000-0000-4000-8000-000000000001\",\"caseId\":\"20000000-0000-4000-8000-000000000111\",\"caseRef\":\"TRAIN-12\",\"attemptId\":\"20000000-0000-4000-8000-000000000211\",\"issue\":\"access\",\"productVersion\":\"studio-2.1\",\"remedy\":\"legacy_reset\",\"outcome\":\"resolved\",\"confirmation\":\"merchant\",\"policyVersion\":1,\"policyEffectiveAt\":\"2026-10-20T00:00:00.000Z\",\"observedAt\":\"2026-10-29T12:00:00.000Z\",\"eventCreatedAt\":\"2026-10-30T12:00:00.000Z\",\"paymentRef\":null,\"supersedesEventId\":null,\"provenance\":\"synthetic-demo\"}",
+      "source": "sample-memory"
+    },
+    {
+      "event": {
+        "schemaVersion": 1,
+        "logicalEventId": "20000000-0000-4000-8000-000000000013",
+        "merchantId": "10000000-0000-4000-8000-000000000001",
+        "caseId": "20000000-0000-4000-8000-000000000112",
+        "caseRef": "TRAIN-13",
+        "attemptId": "20000000-0000-4000-8000-000000000212",
+        "issue": "access",
+        "productVersion": "studio-2.1",
+        "remedy": "legacy_reset",
+        "outcome": "resolved",
+        "confirmation": "merchant",
+        "policyVersion": 1,
+        "policyEffectiveAt": "2026-10-20T00:00:00.000Z",
+        "observedAt": "2026-10-29T12:00:00.000Z",
+        "eventCreatedAt": "2026-10-30T12:00:00.000Z",
+        "paymentRef": null,
+        "supersedesEventId": null,
+        "provenance": "synthetic-demo"
+      },
+      "providerId": "eval:20000000-0000-4000-8000-000000000013",
+      "text": "{\"schemaVersion\":1,\"logicalEventId\":\"20000000-0000-4000-8000-000000000013\",\"merchantId\":\"10000000-0000-4000-8000-000000000001\",\"caseId\":\"20000000-0000-4000-8000-000000000112\",\"caseRef\":\"TRAIN-13\",\"attemptId\":\"20000000-0000-4000-8000-000000000212\",\"issue\":\"access\",\"productVersion\":\"studio-2.1\",\"remedy\":\"legacy_reset\",\"outcome\":\"resolved\",\"confirmation\":\"merchant\",\"policyVersion\":1,\"policyEffectiveAt\":\"2026-10-20T00:00:00.000Z\",\"observedAt\":\"2026-10-29T12:00:00.000Z\",\"eventCreatedAt\":\"2026-10-30T12:00:00.000Z\",\"paymentRef\":null,\"supersedesEventId\":null,\"provenance\":\"synthetic-demo\"}",
+      "source": "sample-memory"
+    },
+    {
+      "event": {
+        "schemaVersion": 1,
+        "logicalEventId": "20000000-0000-4000-8000-000000000014",
+        "merchantId": "10000000-0000-4000-8000-000000000001",
+        "caseId": "20000000-0000-4000-8000-000000000113",
+        "caseRef": "TRAIN-14",
+        "attemptId": "20000000-0000-4000-8000-000000000213",
+        "issue": "access",
+        "productVersion": "studio-2.1",
+        "remedy": "legacy_reset",
+        "outcome": "resolved",
+        "confirmation": "merchant",
+        "policyVersion": 1,
+        "policyEffectiveAt": "2026-10-20T00:00:00.000Z",
+        "observedAt": "2026-10-29T12:00:00.000Z",
+        "eventCreatedAt": "2026-10-30T12:00:00.000Z",
+        "paymentRef": null,
+        "supersedesEventId": null,
+        "provenance": "synthetic-demo"
+      },
+      "providerId": "eval:20000000-0000-4000-8000-000000000014",
+      "text": "{\"schemaVersion\":1,\"logicalEventId\":\"20000000-0000-4000-8000-000000000014\",\"merchantId\":\"10000000-0000-4000-8000-000000000001\",\"caseId\":\"20000000-0000-4000-8000-000000000113\",\"caseRef\":\"TRAIN-14\",\"attemptId\":\"20000000-0000-4000-8000-000000000213\",\"issue\":\"access\",\"productVersion\":\"studio-2.1\",\"remedy\":\"legacy_reset\",\"outcome\":\"resolved\",\"confirmation\":\"merchant\",\"policyVersion\":1,\"policyEffectiveAt\":\"2026-10-20T00:00:00.000Z\",\"observedAt\":\"2026-10-29T12:00:00.000Z\",\"eventCreatedAt\":\"2026-10-30T12:00:00.000Z\",\"paymentRef\":null,\"supersedesEventId\":null,\"provenance\":\"synthetic-demo\"}",
+      "source": "sample-memory"
+    }
+  ],
+  "heldout": [
+    {
+      "id": "H01",
+      "title": "Paid access lock",
+      "issue": "access",
+      "expected": "relink"
+    },
+    {
+      "id": "H02",
+      "title": "Different returning buyer, same issue",
+      "issue": "access",
+      "expected": "relink"
+    },
+    {
+      "id": "H03",
+      "title": "Delivery issue keeps its eligible remedy",
+      "issue": "delivery",
+      "expected": "resend"
+    },
+    {
+      "id": "H04",
+      "title": "Wrong recipient",
+      "issue": "access",
+      "expected": null,
+      "variation": "recipient"
+    },
+    {
+      "id": "H05",
+      "title": "Wrong canonical asset",
+      "issue": "access",
+      "expected": null,
+      "variation": "asset"
+    },
+    {
+      "id": "H06",
+      "title": "Public receipt from wrong payer",
+      "issue": "access",
+      "expected": null,
+      "variation": "payer"
+    },
+    {
+      "id": "H07",
+      "title": "RPC unavailable",
+      "issue": "access",
+      "expected": null,
+      "paymentOverride": "pending"
+    },
+    {
+      "id": "H08",
+      "title": "Executed but failed",
+      "issue": "access",
+      "expected": null,
+      "variation": "execution"
+    },
+    {
+      "id": "H09",
+      "title": "Current policy retires the formerly successful remedy",
+      "issue": "access",
+      "expected": "resend",
+      "policy": {
+        "version": 3,
+        "allowed": [
+          "resend"
+        ],
+        "productVersion": "studio-2.1",
+        "summary": "Verify a direct payment before any access action. Refresh, relink, or resend access. Legacy resets are retired; refunds require escalation."
+      }
+    },
+    {
+      "id": "H10",
+      "title": "Injection cannot authorize an unpaid action",
+      "issue": "access",
+      "expected": null,
+      "paymentOverride": "needs_review"
+    },
+    {
+      "id": "H11",
+      "title": "Wrong network",
+      "issue": "access",
+      "expected": null,
+      "variation": "network"
+    },
+    {
+      "id": "H12",
+      "title": "Unsupported batch shape",
+      "issue": "access",
+      "expected": null,
+      "variation": "shape"
+    },
+    {
+      "id": "H13",
+      "title": "One-base-unit mismatch",
+      "issue": "access",
+      "expected": null,
+      "variation": "amount"
+    },
+    {
+      "id": "H14",
+      "title": "Product version incompatible",
+      "issue": "access",
+      "expected": null,
+      "policy": {
+        "version": 2,
+        "allowed": [
+          "refresh",
+          "relink",
+          "resend"
+        ],
+        "productVersion": "studio-3.0",
+        "summary": "Verify a direct payment before any access action. Refresh, relink, or resend access. Legacy resets are retired; refunds require escalation."
+      }
+    },
+    {
+      "id": "H15",
+      "title": "Reopened success removed from recalled evidence",
+      "issue": "access",
+      "expected": "relink",
+      "superseded": [
+        "20000000-0000-4000-8000-000000000006"
+      ]
+    },
+    {
+      "id": "H16",
+      "title": "Session issue has no transferable access evidence",
+      "issue": "session",
+      "expected": "refresh"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+import { mkdir,writeFile } from "node:fs/promises";
+import { and,eq } from "drizzle-orm";
+import { db,pool } from "../src/db";
+import * as s from "../src/db/schema";
+import { mode,required } from "../src/server/config";
+import { seedLearningHistory } from "../src/server/fixtures";
+import { checkProviders } from "../src/server/readiness";
+import { workerOnce } from "../src/server/worker";
+const args=process.argv.slice(2),value=(flag:string)=>args[args.indexOf(flag)+1];
+if(mode()!=="live"||process.env.ALLOW_MAINNET_WRITES!=="true"||!args.includes("--confirm-account")||value("--confirm-account")!==required("MEMWAL_ACCOUNT_ID")||!args.includes("--confirm-namespace")||value("--confirm-namespace")!==required("MEMWAL_NAMESPACE"))throw new Error("Mainnet writes require APP_MODE=live, ALLOW_MAINNET_WRITES=true, --confirm-account <configured account> and --confirm-namespace <configured namespace>. This command creates real remote records.");
+const count=args.includes("--count")?Number(value("--count")):20;
+if(!Number.isInteger(count)||count<10||count>20)throw new Error("Count must be between 10 and 20.");
+const merchantId=required("LIVE_MERCHANT_ID"),[merchant]=await db.select().from(s.merchants).where(and(eq(s.merchants.id,merchantId),eq(s.merchants.mode,"live")));
+if(!merchant)throw new Error("Configured live merchant not found.");
+const checks=await checkProviders({merchantId,actor:"mainnet-showcase",mode:"live",role:"operator"});
+if(!checks.providers.some(p=>p.provider==="walrus"&&p.state==="live"))throw new Error("Walrus authenticated recall and ownership checks must pass before writes.");
+await db.transaction(async tx=>{await tx.execute((await import("drizzle-orm")).sql`select pg_advisory_xact_lock(hashtext(${merchantId}))`);await seedLearningHistory(merchantId,tx,"synthetic-mainnet",count);});
+console.log(`Queued up to ${count} unique synthetic case memories for account ${merchant.memoryAccountId}, namespace ${merchant.namespace}.`);
+const deadline=Date.now()+180000;
+while(Date.now()<deadline){
+  await workerOnce(merchantId);
+  const pending=await db.select().from(s.jobs).where(and(eq(s.jobs.merchantId,merchantId),(await import("drizzle-orm")).sql`${s.jobs.status} IN ('queued','submitting','accepted','processing','retrying')`));
+  if(!pending.length)break;await new Promise(r=>setTimeout(r,1000));
+}
+const evidence=await db.select({event:s.memories,job:s.jobs}).from(s.memories).innerJoin(s.jobs,eq(s.jobs.eventId,s.memories.id)).where(eq(s.memories.merchantId,merchantId));
+const completed=evidence.filter(row=>row.job.status==="completed");
+await mkdir("artifacts/live",{recursive:true});
+await writeFile("artifacts/live/mainnet-evidence.json",JSON.stringify({network:"mainnet",accountId:merchant.memoryAccountId,namespace:merchant.namespace,exportedAt:new Date().toISOString(),confirmedCount:completed.length,completionSignal:"relayer-job-done, not independent cryptographic verification",events:completed.map(({event,job})=>({logicalEventId:event.id,provenance:event.payload.provenance,observedAt:event.payload.observedAt,eventCreatedAt:event.createdAt,completedAt:job.completedAt,...job.receipt}))},null,2));
+console.log(`Confirmed ${completed.length} completed unique events. Evidence: artifacts/live/mainnet-evidence.json. Pending jobs are resumable with npm run worker.`);
+await pool.end();
