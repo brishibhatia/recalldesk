@@ -4,7 +4,7 @@
 
 RecallDesk is a support workspace for merchants selling digital access or services through direct Sui payments. It checks a customer's payment, recalls relevant case experience, applies current merchant policy, and recommends the next eligible remedy. A merchant approves the action and confirms its outcome. Later cases can use that experience, with visible evidence explaining **what changed because of memory**.
 
-Built for **Total Recall — Track 2: Smart Agents for Real Life**. The local case lifecycle, controlled product access, and learning demonstration are implemented and tested. The complete live support journey and public application hosting remain pending.
+Built for **Total Recall — Track 2: Smart Agents for Real Life**. **Local MVP and project handoff: complete, 10 November 2026.** The delivered scope includes the tested case lifecycle, controlled product access, learning demonstration, provider adapters and published project materials. Live integration verification and hackathon submission remain incomplete; their recorded status is preserved below.
 
 | Start here | Link |
 | --- | --- |
@@ -22,7 +22,9 @@ The **10 November source/article revision** adds Gemini, bounded retries and the
 
 ## Current status
 
-Updated **10 November 2026 (Asia/Kolkata)**. Local verification and live submission readiness are tracked separately. The user authorized reviewed source/article publication and a bounded one-then-ten synthetic Mainnet phase after authenticated delegate access. Zero spending and no automatic wallet transfers remain required. Public application hosting is still unconfigured.
+**Project closeout — 10 November 2026 (Asia/Kolkata).** The project owner has marked this development phase complete. The local MVP and handoff are delivered, with **138 passing automated tests**, **six passing production browser tests**, successful builds and clean-install CI, and published source, article and sample video.
+
+**Live/hackathon readiness remains incomplete.** Closure does not establish a successful live model response, a genuine order-bound payment, completed Mainnet storage, a publicly hosted support backend or a submitted entry. The outstanding work below is retained for a future continuation. Zero spending and no automatic wallet transfers remain the operating constraints.
 
 **Latest live check:** the user confirmed replacement credentials and free-tier access. Authenticated **Tatum Mainnet service/account reads passed**. The account's actual embedded owner was saved, and controlled-product merchant **`5a151d00-8b4f-4060-82ea-5c3aea4528bf`** was provisioned in the separate `recalldesk_live` database. Its actual UUID is saved as `LIVE_MERCHANT_ID` in **`.local/live-pilot/.env.local`**. The local pilot uses **http://localhost:3001**; the demo remains separate at port 3000.
 
@@ -30,7 +32,7 @@ Updated **10 November 2026 (Asia/Kolkata)**. Local verification and live submiss
 
 Gemini metadata is accessible, but **live inference has not passed**. Across three separately authorized four-request allowances, **12 attempts produced zero validated responses**. The latest four recorded three HTTP 503 responses and one timeout. The adapter now sends the documented API revision, waits on bounded exponential backoff, and honors Google's `Retry-After` header. Every retry consumes the shared allowance; SDK retries remain disabled. The latest run actually waited 30 seconds, then four seconds, before its retries. Further inference is blocked because the allowance is exhausted. [Latest redacted evidence](artifacts/qa/submission-20261110/verification.json).
 
-The [bounded Mainnet write procedure](docs/mainnet-write-procedure.md) is authorized but **blocked by replacement delegate registration**: one synthetic event, completed receipt and exact-event recall, then a target total of ten. **Saved `ALLOW_MAINNET_WRITES=false` remains unchanged; no genuine payment or Mainnet memory was created.**
+At closeout, the authorized [bounded Mainnet write procedure](docs/mainnet-write-procedure.md) remains unexecuted and **blocked by replacement delegate registration**: one synthetic event, completed receipt and exact-event recall, then a target total of ten. **Saved `ALLOW_MAINNET_WRITES=false` remains unchanged; no genuine payment or Mainnet memory was created.**
 
 | Area | Status |
 | --- | --- |
@@ -214,7 +216,7 @@ Only completed real Mainnet writes count as Mainnet memories. An accepted job do
 ```sh
 npm run lint
 npm run typecheck
-npm test                         # Requires migrated PostgreSQL; no live provider calls
+npm test                         # Prepares an isolated test DB; requires running local PostgreSQL
 npm run evaluate                 # Generates artifacts/evaluation/*.json
 npm run build
 npm run scan:secrets
@@ -224,13 +226,13 @@ npm run test:a11y                 # Same running app; automated accessibility ch
 npm run demo:record               # Captures the real 2:40 sample workflow, with captions
 ```
 
-The test commands use the default local database and app unless their shell environment overrides them; they do not automatically load `.env.local`. For a separate test database, export `DATABASE_URL` in the shell running `npm test`. For browser tests against another app address, set `PLAYWRIGHT_BASE_URL` before `npm run test:e2e`.
+`npm test` creates and migrates the isolated `recalldesk_test` database, strips live provider credentials, and refuses application database names. It loads optional `.env.test.local`, not the application `.env.local`; an explicitly supplied `DATABASE_URL` must identify a local `recalldesk_test` or `recalldesk_test_<suffix>` database. Browser tests use the running demo app; set `PLAYWRIGHT_BASE_URL` to select another isolated demo instance. See [isolated test database](#isolated-test-database).
 
 On Linux, Chromium may require system libraries (`npx playwright install-deps chromium`). This build's WSL environment used an ignored local library directory; [verification](docs/verification.md) documents that workaround. Windows users install the Chromium browser normally.
 
 The recorded evaluation used **16 held-out synthetic cases**, **14 separate learning examples**, and **one deterministic trial** with `sample-template-v1`. Both variants use the same payment and policy rules; memory access is the intended difference. It measured baseline **13/16**, memory-enabled **16/16**, **0 unsupported approvals**, and **0 invalid citations**. These are fixture results, not real-world accuracy or live-model quality. The dashboard remains empty until a run is requested in that workspace.
 
-The separate `evaluate:live` command uses real Walrus retrieval and the selected provider/model against a reviewed four-scenario manifest. No live result is included in the fixture score. Its full eight-request run exceeds the current four-attempt verification allowance and remains pending. A small Gemini smoke check, when replacement credentials and free access are verified, is labeled **live inference on synthetic input**. Setup, prerequisites and the shared request budget are documented in [live verification](docs/live-verification.md).
+The separate `evaluate:live` command uses real Walrus retrieval and the selected provider/model against a reviewed four-scenario manifest. No live result is included in the fixture score. Its full eight-request run remains unexecuted. All three four-attempt verification grants are exhausted: **12 attempts, zero validated responses, zero remaining allowance**. Further inference requires a new bounded authorization. Any future successful smoke check using fixtures must be labeled **live inference on synthetic input**. Setup, prerequisites and the shared request budget are documented in [live verification](docs/live-verification.md).
 
 - [Generated evaluation report](artifacts/evaluation/latest.json)
 - [Exported versioned dataset](artifacts/evaluation/dataset-v1.json)
@@ -248,31 +250,32 @@ npm run worker -- --once
 npm run worker:resume -- <job-uuid> --confirm
 ```
 
-For the **current isolated pilot**, run from the source root. After saving replacement keys and confirming free access, read the account owner and authenticate recall before provisioning:
+### Pilot status at handoff
+
+The current pilot is already provisioned. Its verified account owner and actual merchant UUID are saved in `.local/live-pilot/.env.local`; no repeat provisioning or database reset is needed. The remaining Walrus access step is owner-wallet registration of the fresh delegate listed above.
+
+These diagnostic commands are available from the source root for a future continuation. They perform read checks, not model inference or memory writes:
 
 ```sh
-npm run pilot:run -- pilot:read-check -- --live --confirm-free-tier --confirm-rotated --save-owner
-npm run pilot:run -- merchant:create -- --controlled-product
+npm run pilot:run -- walrus:diagnose -- --live
 npm run pilot:run -- integrations:check -- --live
-npm run pilot:run -- llm:smoke -- --live --confirm-free-tier --confirm-rotated
 ```
 
-Only pass the confirmation flags after completing rotation and verifying free-tier access with billing disabled. `MEMWAL_OWNER_ADDRESS` comes from the successful account read; `LIVE_MERCHANT_ID` must be the actual UUID printed by provisioning. Save that UUID in the pilot environment and remove the provisioning password after successful creation. The smoke command consumes one of the shared four inference attempts; readiness metadata reads do not.
-
-The separate evaluation command is `npm run pilot:run -- evaluate:live -- --live --allow-inference --confirm-free-tier --confirm-rotated --dataset .local/live-eval.json`. It requires reviewed live cases and real recalled evidence and remains pending. It cannot complete all four paired scenarios within the current four-attempt allowance. Payment-receipt checks and `mainnet:seed` are documented in [live verification](docs/live-verification.md) and [integrations](docs/integrations.md) for a later authorized phase. **Keep `ALLOW_MAINNET_WRITES=false`; no Mainnet write is part of the current task.**
+The inference allowance is exhausted; do not rerun smoke checks or `evaluate:live` without a new bounded allowance. Setup for another isolated pilot, genuine payment checks, and the prepared one-then-ten Mainnet sequence are documented in [live verification](docs/live-verification.md), [integrations](docs/integrations.md), and the [bounded write procedure](docs/mainnet-write-procedure.md). **Saved `ALLOW_MAINNET_WRITES=false` remains unchanged. No Mainnet write was performed during this completed development phase.**
 
 ## Deployment and remaining external work
 
 Use a Node 24 host with outbound native gRPC/HTTP2, persistent PostgreSQL, and a separate long-running worker (or authenticated scheduled worker calls). A [Dockerfile](Dockerfile), [Compose configuration](compose.yaml), and [deployment procedure](docs/deployment.md) are included. The connected Sites runtime uses Cloudflare Workers without the required raw TCP path, so it was not used to claim a working backend deployment.
 
-The current milestone is a tested local Gemini pilot with read-only Tatum/Walrus checks, verified free access, and Mainnet writes disabled. A supported real payment, approved product restore, newly confirmed outcome completed in Walrus, and later remotely recalled recommendation remain a subsequent, separately authorized milestone.
+The completed deliverable is the local support MVP, keyless demonstration, implemented live adapters and documented handoff. Authenticated Tatum service/account reads passed. Walrus authenticated recall remains blocked by delegate registration, and Gemini has not produced a validated live response. The full live journey—genuine payment, approved restore, observed outcome, completed Walrus write and later remote recall—remains unfinished follow-up work.
 
 | Remaining step | Required input or evidence |
 | --- | --- |
-| Verify an actual wallet payment | Server-side `TATUM_API_KEY`, a configured order and payer, and its genuine Mainnet digest plus wallet/version. Test the actual transaction shape, wrong recipient and reuse protection. |
-| Complete Mainnet storage and recall | Merchant-owned account, owner/delegate configuration, and a reviewed account/namespace destination. Confirm at least **10 distinct completed** logical events and preserve returned job/storage references. Current confirmed count: **0**. |
+| Verify an actual wallet payment | Tatum credentials are configured and authenticated reads passed. Still needed: a configured order and payer, its genuine Mainnet digest and wallet/version, and actual wrong-recipient/reuse checks. |
+| Complete Mainnet storage and recall | Account and owner are verified. The owner must register the replacement delegate before authenticated recall and the gated write sequence can run. Confirm at least **10 distinct completed** logical events with returned references. Current confirmed count: **0**. |
+| Validate live explanations | Resolve Gemini inference availability and obtain a new bounded request allowance; validate the actual response against schema, remedy, policy and citations. Current result: **0 successes / 12 attempts**. |
 | Prove the live learning loop | Complete a new outcome write, then recall its exact evidence in a fresh authorized session. Run the separate live evaluation and preserve its results. |
-| Host the application | An authorized Node/gRPC-compatible host, persistent PostgreSQL, worker execution and a spending limit. Verify the deployed customer and merchant lifecycle. |
+| Host the application | A compatible free or sponsored Node/gRPC host, persistent PostgreSQL and worker execution under the zero-spend constraint. Verify the deployed customer and merchant lifecycle. |
 | Finish submission | Actual account identifiers, current-rule review and authorized form submission. Repository, article and recorded sample demo are already public. |
 
 Configure credentials in `.env.local` or the host's secret manager, never in chat. Follow [integration setup](docs/integrations.md), [live verification](docs/live-verification.md), and the [submission checklist](docs/submission-checklist.md). The checked official rules require a public repository; repository visibility does not grant a source reuse license.
