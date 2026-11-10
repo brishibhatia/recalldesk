@@ -296,3 +296,7 @@ Configure credentials in `.env.local` or the host's secret manager, never in cha
 Only minimized structured experience belongs in memory. The standard Walrus relayer processes plaintext before encryption. Corrections and delegate revocation do not promise erasure of old blobs or information already read. External fulfillment, email and refunds remain merchant operations. The controlled workbook is the only built-in entitlement target. The assistant drafts and recommends; it does not autonomously transfer funds.
 
 **Application source: all rights reserved; no general reuse license granted.** Public visibility and permission to reuse are separate. The checked event rules require a public repository, but do not explicitly require an open-source license. Third-party dependency and asset licenses remain applicable; see [NOTICE.md](NOTICE.md). The team may adopt a separate reuse license later.
+
+### Isolated test database
+
+`npm test` creates/migrates `recalldesk_test` on the local PostgreSQL server and removes live provider credentials from its child process before running tests. It does not load the application `.env.local`, reset the demo or touch the pilot. For custom local database credentials, put a test-only `DATABASE_URL` in ignored `.env.test.local`. The database name must be `recalldesk_test` or `recalldesk_test_<suffix>`; application database names are refused before any tests run. CI uses its disposable `recalldesk_test_ci` database. Run `npm run db:local` first when using the bundled local server.

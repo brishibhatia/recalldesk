@@ -9,13 +9,13 @@ jobs:
         env:
           POSTGRES_USER: recalldesk
           POSTGRES_PASSWORD: local_demo_only
-          POSTGRES_DB: recalldesk
+          POSTGRES_DB: recalldesk_test_ci
         ports: ["55432:5432"]
         options: --health-cmd="pg_isready -U recalldesk" --health-interval=5s --health-timeout=5s --health-retries=12
     env:
       APP_MODE: demo
       APP_BASE_URL: http://localhost:3000
-      DATABASE_URL: postgresql://recalldesk:local_demo_only@localhost:55432/recalldesk
+      DATABASE_URL: postgresql://recalldesk:local_demo_only@localhost:55432/recalldesk_test_ci
       NEXT_TELEMETRY_DISABLED: 1
     steps:
       - uses: actions/checkout@v4

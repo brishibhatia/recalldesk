@@ -67,7 +67,17 @@
   "mainnetMemories": 0,
   "mainnetWrites": 0,
   "payment": "No genuine order-bound transaction supplied",
-  "publication": "pending",
+  "publication": {
+    "repository": "https://github.com/brishibhatia/recalldesk",
+    "sourceCommit": "852da98132be2386c5ddf51009e3a202143be0df",
+    "article": "https://brishibhatia.github.io/recalldesk/",
+    "pagesRun": "https://github.com/brishibhatia/recalldesk/actions/runs/42790741057",
+    "pagesStatus": "success",
+    "articleHttpStatus": 200,
+    "articleCurrentClaimsVerified": true,
+    "backendDeployment": false,
+    "video": "Historical 8 November 160.16-second synthetic demo unchanged"
+  },
   "spending": false,
   "browser": {
     "checkedAt": "2026-11-10T09:22:34.852Z",
@@ -108,9 +118,10 @@
     "liveDatabase": "recalldesk_live"
   },
   "secretScan": {
-    "scanned": 173,
+    "scanned": 176,
     "tracedFilesChecked": 2500,
-    "findings": []
+    "findings": [],
+    "scope": "RecallDesk source/publication artifacts, browser bundles and server trace exclusions; local secret values checked without disclosure"
   },
   "tatum": "Authenticated Mainnet service and account reads passed; genuine payment unverified",
   "productionBrowserTests": {
@@ -131,5 +142,10 @@
     ]
   },
   "privateFileModes": "0600",
-  "finalLocalCheckedAt": "2026-11-10T09:25:59.700Z"
+  "finalLocalCheckedAt": "2026-11-10T09:25:59.700Z",
+  "ciInitial": {
+    "url": "https://github.com/brishibhatia/recalldesk/actions/runs/42790741108",
+    "status": "failed",
+    "reason": "CI database lacked test-only name required by worker tests; 135 passed, three skipped. Fixed workflow and isolated npm test runner; rerun pending."
+  }
 }

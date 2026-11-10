@@ -20,7 +20,7 @@
     "start": "next start --hostname 0.0.0.0",
     "typecheck": "next typegen && tsc --noEmit",
     "lint": "eslint .",
-    "test": "vitest run",
+    "test": "tsx --env-file-if-exists=.env.test.local scripts/test.ts",
     "test:e2e": "playwright test",
     "test:a11y": "tsx scripts/accessibility.ts",
     "demo:record": "tsx scripts/record-demo.ts",
