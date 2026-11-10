@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-11-10T09:31:52.388Z",
+  "url": "https://brishibhatia.github.io/recalldesk/",
+  "articlePublication": true,
+  "video": "Historical synthetic demo, unchanged",
+  "supportBackendDeployed": false,
+  "results": [
+    {
+      "viewport": "desktop",
+      "httpStatus": 200,
+      "pageErrors": 0,
+      "overflow": false,
+      "videoDurationSeconds": 160.16,
+      "latestEvidenceVisible": true
+    },
+    {
+      "viewport": "mobile",
+      "httpStatus": 200,
+      "pageErrors": 0,
+      "overflow": false,
+      "videoDurationSeconds": 160.16,
+      "latestEvidenceVisible": true
+    }
+  ]
+}

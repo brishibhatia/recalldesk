@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-11-10T09:33:59.361Z",
+  "merchantId": "5a151d00-8b4f-4060-82ea-5c3aea4528bf",
+  "database": "recalldesk_live",
+  "writesEnabled": false,
+  "liveTestDigestConfigured": false,
+  "merchants": 1,
+  "orders": 0,
+  "cases": 0,
+  "memory_events": 0,
+  "jobs": 0
+}

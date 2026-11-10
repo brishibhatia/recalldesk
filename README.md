@@ -60,7 +60,7 @@ The table below preserves the **8 November** baseline. Results for the Gemini/lo
 | Synthetic evaluation | Baseline **13/16**; memory **16/16**; failed-remedy repetitions **3 → 0** | [Measured report](artifacts/evaluation/latest.json) |
 | Publication | Public repository, article and playable **160.16-second** recording verified | [Publication check](artifacts/qa/publication.json) |
 
-These results cover the local application and controlled fixtures. They do not establish live provider reliability, real-world model accuracy, or an accessibility certification. The latest checked [GitHub CI run](https://github.com/brishibhatia/recalldesk/actions/runs/42504413458) completed successfully for commit `a141a65`.
+These results cover the local application and controlled fixtures. They do not establish live provider reliability, real-world model accuracy, or an accessibility certification. The final [clean-install CI run](https://github.com/brishibhatia/recalldesk/actions/runs/42791305942) passed for implementation commit `cc5f49c`: install, migration/seed, lint, types, **138 tests**, evaluation, secret scan, build, browser lifecycle and accessibility. The public article and 160.16-second recording were verified again in fresh desktop/mobile browsers. [Final release evidence](artifacts/qa/submission-20261110/verification.json).
 
 ## Run locally
 

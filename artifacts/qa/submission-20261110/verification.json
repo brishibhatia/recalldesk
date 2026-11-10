@@ -76,7 +76,32 @@
     "articleHttpStatus": 200,
     "articleCurrentClaimsVerified": true,
     "backendDeployment": false,
-    "video": "Historical 8 November 160.16-second synthetic demo unchanged"
+    "video": "Historical 8 November 160.16-second synthetic demo unchanged",
+    "browser": {
+      "checkedAt": "2026-11-10T09:31:52.388Z",
+      "url": "https://brishibhatia.github.io/recalldesk/",
+      "articlePublication": true,
+      "video": "Historical synthetic demo, unchanged",
+      "supportBackendDeployed": false,
+      "results": [
+        {
+          "viewport": "desktop",
+          "httpStatus": 200,
+          "pageErrors": 0,
+          "overflow": false,
+          "videoDurationSeconds": 160.16,
+          "latestEvidenceVisible": true
+        },
+        {
+          "viewport": "mobile",
+          "httpStatus": 200,
+          "pageErrors": 0,
+          "overflow": false,
+          "videoDurationSeconds": 160.16,
+          "latestEvidenceVisible": true
+        }
+      ]
+    }
   },
   "spending": false,
   "browser": {
@@ -118,7 +143,7 @@
     "liveDatabase": "recalldesk_live"
   },
   "secretScan": {
-    "scanned": 176,
+    "scanned": 178,
     "tracedFilesChecked": 2500,
     "findings": [],
     "scope": "RecallDesk source/publication artifacts, browser bundles and server trace exclusions; local secret values checked without disclosure"
@@ -147,5 +172,129 @@
     "url": "https://github.com/brishibhatia/recalldesk/actions/runs/42790741108",
     "status": "failed",
     "reason": "CI database lacked test-only name required by worker tests; 135 passed, three skipped. Fixed workflow and isolated npm test runner; rerun pending."
-  }
+  },
+  "cleanTestRunner": {
+    "checkedAt": "2026-11-10T09:30:37.093Z",
+    "npmTestPassed": 138,
+    "npmTestFailed": 0,
+    "database": "recalldesk_test",
+    "businessDatabaseRejectedBeforeTests": true,
+    "privateValuesLogged": false
+  },
+  "ciFollowup": {
+    "url": "https://github.com/brishibhatia/recalldesk/actions/runs/42791305942",
+    "commit": "cc5f49c1cf5966438af3efa32f8b62507f705f13",
+    "status": "success",
+    "steps": [
+      {
+        "name": "Set up job",
+        "conclusion": "success"
+      },
+      {
+        "name": "Initialize containers",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run actions/checkout@v4",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run actions/setup-node@v4",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm ci",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run db:migrate",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run db:seed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run lint",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run typecheck",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm test",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run evaluate",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run scan:secrets",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run build",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npx playwright install --with-deps chromium",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm start > /tmp/recalldesk-web.log 2>&1 &",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run worker > /tmp/recalldesk-worker.log 2>&1 &",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run node scripts/wait-for-app.mjs",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run test:e2e",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm run test:a11y",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run actions/upload-artifact@v4",
+        "conclusion": "success"
+      },
+      {
+        "name": "Post Run actions/setup-node@v4",
+        "conclusion": "success"
+      },
+      {
+        "name": "Post Run actions/checkout@v4",
+        "conclusion": "success"
+      },
+      {
+        "name": "Stop containers",
+        "conclusion": "success"
+      },
+      {
+        "name": "Complete job",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "liveState": {
+    "checkedAt": "2026-11-10T09:33:59.361Z",
+    "merchantId": "5a151d00-8b4f-4060-82ea-5c3aea4528bf",
+    "database": "recalldesk_live",
+    "writesEnabled": false,
+    "liveTestDigestConfigured": false,
+    "merchants": 1,
+    "orders": 0,
+    "cases": 0,
+    "memory_events": 0,
+    "jobs": 0
+  },
+  "finalCheckedAt": "2026-11-10T14:44:12.652Z"
 }

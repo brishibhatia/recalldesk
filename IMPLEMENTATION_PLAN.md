@@ -80,3 +80,7 @@ See docs/verification.md for commands and measured outcomes; docs/submission-che
 - [ ] Supply a genuine order-bound payment and persistent compatible public hosting.
 
 Final results and publication links: `artifacts/qa/submission-20261110/verification.json`.
+
+- [x] Publish reviewed source/article revision and verify real public links/video at both sizes.
+- [x] Fix clean-install CI test database isolation; complete the full green CI run `42791305942` on implementation commit `cc5f49c`.
+- [x] Preserve live merchant/database and zero-write state; record remaining external blockers without a submission-ready claim.

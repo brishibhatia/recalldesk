@@ -22,7 +22,7 @@ The published requirement is a **public repository**. The checked pages do not s
 | Live continuity | Recommendation snapshot records recall source and evidence | **Pending.** After completion, sign in afresh and obtain a recommendation using actual Walrus recall evidence |
 | Reachable working demonstration | [Deployment artifacts](deployment.md), [runbook](demo-runbook.md), [screenshots](../artifacts/screenshots/) | **Public deployment pending.** Supply an authorized compatible Node/gRPC host and persistent PostgreSQL, then verify a complete deployed lifecycle |
 | Public repository | [brishibhatia/recalldesk](https://github.com/brishibhatia/recalldesk), source, lockfile, migrations, [notice](../NOTICE.md) | **8 November release published and confirmed public.** Gemini/provider-repair changes are local pending reviewed release publication. Source reuse rights remain separate from visibility |
-| Published explanatory blog | [Published article and walkthrough](https://brishibhatia.github.io/recalldesk/), [article source](blog-draft.md) | **8 November article published.** The 10 November source revision awaits publication. Both must retain synthetic/live distinctions; the static article is not the hosted support backend |
+| Published explanatory blog | [Published article and walkthrough](https://brishibhatia.github.io/recalldesk/), [article source](blog-draft.md) | **10 November article revision published and browser-verified.** The original recording remains dated 8 November. Both must retain synthetic/live distinctions; the static article is not the hosted support backend |
 | Real 2–3 minute demo video | [Actual recording in the public repository](https://github.com/brishibhatia/recalldesk/blob/main/artifacts/demo/recalldesk-demo.webm), [runbook](demo-runbook.md) | **8 November recording published:** 2:40.16, synthetic/sample providers clearly labeled. A live integration recording remains pending actual live evidence |
 | Submission form and identifiers | List below | **Pending user-owned details and submission authorization.** Never put private delegate material in the form |
 | Current rules and contradictions | Event page checked 2026-11-10; separate Walrus rules checked 2026-11-08 | Confirm current submission form and account identifiers; unresolved wording remains recorded |
@@ -46,7 +46,8 @@ No personal account identifier is fabricated or committed here. The team must al
 - [x] 8 November repository made public after scoped secret scan; reuse/license decision recorded separately.
 - [x] 8 November blog reviewed and published with accurate synthetic integration and measurement claims.
 - [x] 8 November sample video inspected, between two and three minutes, labeled honestly, and uploaded to the public project repository.
-- [ ] Current provider-repair release and revised article published after final review; live video updated only with actual completed evidence.
+- [x] Current provider-repair release and revised article published after final review; public page and historical video checked in a fresh browser.
+- [ ] A live integration video can be recorded only after actual completed evidence exists.
 - [ ] Current rule wording and account identifiers checked; submission explicitly authorized and completed by deadline.
 
 An accepted provider job, successful build, local recording, or draft blog does not satisfy the corresponding completed-storage, deployment, published-video, or published-blog requirement. If the deadline passes before these steps, continue the product work and describe the event as past.
