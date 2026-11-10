@@ -2462,7 +2462,7 @@ function Settings({
                   ? "Server variables: TATUM_API_KEY, TATUM_SUI_GRPC_ENDPOINT. Node HTTP/2 gRPC, Mainnet only."
                   : provider.provider === "walrus"
                     ? "Server variables: MEMWAL_ACCOUNT_ID, MEMWAL_DELEGATE_KEY, MEMWAL_NAMESPACE, LIVE_MERCHANT_ID. One merchant-owned account with a dedicated delegate."
-                    : "Server variables: LLM_PROVIDER=openai, LLM_MODEL, OPENAI_API_KEY. Model access and successful inference are checked separately."}
+                    : "Select LLM_PROVIDER=gemini with GEMINI_API_KEY, or openai with OPENAI_API_KEY; set LLM_MODEL. Credentials, model access and validated inference are checked separately. Model access does not verify a free billing tier."}
               </p>
               {provider.evidence && (
                 <pre>{JSON.stringify(provider.evidence, null, 2)}</pre>

@@ -2,9 +2,43 @@
 
 ## Runtime requirements
 
-Node 24, persistent PostgreSQL, outbound HTTPS and native TLS gRPC/HTTP2, a stable HTTPS base URL, server-managed secrets, and a background worker. Business data and outbox state must not live on an ephemeral filesystem.
+Node **24.22.1+ within Node 24**, persistent PostgreSQL, outbound HTTPS and native TLS gRPC/HTTP2, a stable HTTPS base URL, server-managed secrets, and a background worker. Business data and outbox state must not live on an ephemeral filesystem. The current [Walrus quick start](https://docs.wal.app/walrus-memory/getting-started/quick-start) requires this newer patch; the older 24.18.0 results in the verification history remain historical.
 
 The connected Sites skill describes Cloudflare Workers with HTTP-based external connections and no raw TCP. This does not fit RecallDesk's installed native gRPC transport. No Site or chargeable resource was created. The README records repository/article publication separately from the still-pending application deployment. Docker Desktop is present on the host but not enabled for this WSL distro, so the image/Compose path is prepared but not locally executed.
+
+## Isolated local live pilot
+
+The 9 November task originally prohibited publication and Mainnet writes. On 10 November the user authorized the reviewed source/article release and a bounded one-then-ten synthetic memory phase after delegate authentication succeeds. Zero spending, no transfers and no automatic wallet transactions remain required. Keep the demo and its database intact.
+
+`npm run pilot:setup` prepares `.local/live-pilot` with its own ignored `.env.local` and separate `recalldesk_live` PostgreSQL database. The source copy has its own locked dependency installation, Next build output and process environment. Rerunning setup refreshes source files while preserving the pilot's environment and database records. Do not copy root demo database records into it. Restrict the pilot directory and environment to their owner; the setup writes a cryptographically random auth secret without displaying it. Provider secrets must be entered directly in the local file after rotation.
+
+Use port 3000 for the root demo and **3001 for the pilot**. With PostgreSQL running, prepare/build the pilot and start its processes in separate terminals:
+
+```sh
+npm run pilot:setup
+npm run pilot:run -- install
+npm run pilot:run -- db:migrate
+npm run pilot:run -- build
+npm run pilot:run -- start
+```
+
+```sh
+npm run pilot:run -- worker
+```
+
+The wrapper binds the web process to `127.0.0.1:3001`; the pilot's `APP_BASE_URL` must match `http://localhost:3001`. `ALLOW_MAINNET_WRITES=false` remains mandatory; a running worker does not authorize writes. Leave `WORKER_TOKEN` blank for this standalone arrangement. Live mode disables demo entry and HTTP signup, so provision the merchant only after account ownership validation. Restart the pilot after changing its environment. Database data persists independently of the source copy and application processes.
+
+The current workspace has merchant `5a151d00-8b4f-4060-82ea-5c3aea4528bf` and a controlled product. Its actual UUID and verified account owner are already saved in the pilot environment. The generated password was removed from that environment and retained only in the owner-readable, ignored `.local/live-pilot/.local/merchant-login.json` for local handoff. Save it in your password manager, then remove the handoff file. No new merchant or database reset is needed.
+
+For this WSL workspace, the official Node 24.22.1 Linux archive was checksum-verified and extracted into `.local/runtime/node-v24.22.1-linux-x64`. To use it without changing the system installation, run `export PATH="$PWD/.local/runtime/node-v24.22.1-linux-x64/bin:$PATH"` from the project root before the commands above. Other hosts should install the documented Node version through their normal runtime manager.
+
+Configure only the selected explanation provider: Gemini uses `LLM_PROVIDER=gemini`, `LLM_MODEL=gemini-3.8-flash` and `GEMINI_API_KEY`, with `OPENAI_API_KEY` empty. The model is documented with a free tier, but project access/billing must be checked separately. Preserve the original four attempts and four repair attempts. A third, separately authorized four-attempt grant binds both earlier ledgers by hash; metadata reads and inference evidence are reported separately. See [live verification](live-verification.md).
+
+The host's port binding and local firewall determine whether other devices can reach the pilot. Use a loopback-only listener for the local live process; do not expose it through a tunnel or public ingress during this task.
+
+The setup sets `LOCAL_PILOT_VERIFICATION=true`, which the wrapper requires. UI and CLI inference share the four-attempt ledger. The default `PILOT_FREE_TIER_CONFIRMED=false` and `PILOT_CREDENTIALS_ROTATED=false` prevent UI inference even if keys are later entered. Set these attestations only after checking free project access/billing and completing credential rotation. The reviewed pilot only permits Gemini 3.8 Flash; another provider/model is rejected without a request. Ordinary deployments outside this explicitly marked pilot retain normal Gemini/OpenAI selection.
+
+A named `LLM_VERIFICATION_GRANT` also requires a private authorization manifest bound to the preserved original ledger hash; the name alone grants nothing. Each grant closes on first validated success or four requests. All three current grants are exhausted (12 requests total). Later grants hash-link all prior histories; do not reset them. `LLM_MAX_RETRIES=2` enables at most two application retries, each counted, with SDK retries disabled. Preserve all ledgers across source refreshes and restarts; neither is a deployment asset. The repaired Walrus private delegate belongs only in the pilot environment, and its fresh public key still needs owner-wallet registration.
 
 ## Plain Node deployment
 
@@ -56,6 +90,6 @@ Back up PostgreSQL with the host's managed backups or `pg_dump`; test restoratio
 
 ## Publication review
 
-Before publishing: run checks, secret scan, inspect the Git diff/staged paths, document reuse terms, and review the blog/evidence. The November8 instruction authorizes repository/blog publication; creating paid hosting still requires the missing target and budget. Do not publish `.env.local`, `.local`, test authentication storage states, raw provider responses, or unreviewed `artifacts/live` data. The checked event rules require public visibility, not a particular source license.
+Before any future publication: run checks, secret scan, inspect the Git diff/staged paths, document reuse terms, and review the blog/evidence. Repository/blog publication was performed under the November8 instruction. The 10 November confirmation authorizes reviewed source/article publication. Spending, transfers and automatic owner-wallet transactions remain prohibited. Do not publish `.env.local`, `.local`, test authentication storage states, raw provider responses, or unreviewed `artifacts/live` data. The checked event rules require public visibility, not a particular source license.
 
-Smallest missing deployment requirement: an authorized Node-compatible target plus persistent PostgreSQL access and the intended public hostname. Live sponsor readiness additionally requires the dedicated merchant credentials and authorized Mainnet write destination.
+Smallest missing deployment requirement: an authorized Node-compatible target plus persistent PostgreSQL access and the intended public hostname. Live sponsor readiness additionally requires registering the existing fresh delegate, authenticated recall, completed storage and a genuine order-bound payment.

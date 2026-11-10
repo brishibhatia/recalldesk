@@ -181,6 +181,12 @@ export async function evidenceReport(p: Principal, caseId: string) {
           scores: latest.decision.scores,
           explanation: templateExplanation(latest.decision),
           explanationProvider: latest.provider,
+          inferenceSucceeded:
+            /^(?:gemini|openai):[a-zA-Z0-9._:/-]+$/.test(latest.provider) &&
+            latest.providerError === null,
+          explanationModel: /^(?:gemini|openai):/.test(latest.provider)
+            ? latest.provider.slice(latest.provider.indexOf(":") + 1)
+            : null,
           providerError: latest.providerError,
         }
       : null,

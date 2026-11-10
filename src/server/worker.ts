@@ -5,7 +5,10 @@ import * as s from "../db/schema";
 import { mode } from "./config";
 import { memoryClient } from "./providers/memory";
 
-export async function workerOnce(merchantId?: string) {
+export async function workerOnce(
+  merchantId?: string,
+  eventIds?: readonly string[],
+) {
   await db
     .insert(s.workerHeartbeats)
     .values({ id: `worker-${mode()}`, mode: mode(), updatedAt: new Date() })
@@ -14,9 +17,20 @@ export async function workerOnce(merchantId?: string) {
       set: { updatedAt: new Date() },
     });
   const leaseToken = randomUUID();
+  // Bounded showcase runs process only their authorized logical events.
+  // An empty allowlist must never become an unrestricted invocation.
+  const eventFilter =
+    eventIds === undefined
+      ? sql`true`
+      : eventIds.length
+        ? sql`j.event_id IN (${sql.join(
+            eventIds.map((id) => sql`${id}::uuid`),
+            sql`, `,
+          )})`
+        : sql`false`;
   const claimed = await db.transaction(async (tx) => {
     const result = await tx.execute(
-      sql`SELECT j.id FROM memory_jobs j JOIN merchants m ON m.id=j.merchant_id WHERE m.mode=${mode()} AND (${merchantId ?? null}::uuid IS NULL OR m.id=${merchantId ?? null}::uuid) AND j.status IN ('queued','submitting','accepted','processing','retrying') AND j.next_run_at<=now() AND (j.lease_until IS NULL OR j.lease_until<now()) ORDER BY j.created_at FOR UPDATE OF j SKIP LOCKED LIMIT 1`,
+      sql`SELECT j.id FROM memory_jobs j JOIN merchants m ON m.id=j.merchant_id WHERE m.mode=${mode()} AND (${merchantId ?? null}::uuid IS NULL OR m.id=${merchantId ?? null}::uuid) AND ${eventFilter} AND j.status IN ('queued','submitting','accepted','processing','retrying') AND j.next_run_at<=now() AND (j.lease_until IS NULL OR j.lease_until<now()) ORDER BY j.created_at FOR UPDATE OF j SKIP LOCKED LIMIT 1`,
     );
     if (!result.rows.length) return null;
     const id = String(result.rows[0].id);
@@ -163,18 +177,16 @@ export async function workerOnce(merchantId?: string) {
       retryAfterSeconds?: number;
     };
     const tries = claimed.attempts + 1,
-      permanent = [401, 403, 400, 409].includes(e.status ?? 0);
+      permanent = [400, 401, 402, 403, 409].includes(e.status ?? 0);
     await update({
-      status: permanent
-        ? "failed"
-        : tries >= 5
-          ? "uncertain"
-          : "retrying",
+      status: permanent ? "failed" : tries >= 5 ? "uncertain" : "retrying",
       attempts: tries,
       error:
-        e.code === "READINESS_REQUIRED"
-          ? "Run a successful Walrus ownership and delegate readiness check before writing."
-          : "Provider operation failed; the job ID and stable operation key are preserved. Inspect readiness before resuming.",
+        e.status === 402
+          ? "Provider requested payment. Processing stopped; do not enable billing or retry without separate review."
+          : e.code === "READINESS_REQUIRED"
+            ? "Run a successful Walrus ownership and delegate readiness check before writing."
+            : "Provider operation failed; the job ID and stable operation key are preserved. Inspect readiness before resuming.",
       nextRunAt: new Date(
         Date.now() +
           Math.max(e.retryAfterSeconds ?? 0, Math.min(300, 2 ** tries)) * 1000,

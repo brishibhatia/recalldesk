@@ -1,0 +1,29 @@
+{
+  "limit": 4,
+  "attempts": [
+    {
+      "at": "2026-11-09T23:24:06.811Z",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "purpose": "synthetic-structured-output-smoke"
+    },
+    {
+      "at": "2026-11-09T23:25:16.895Z",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "purpose": "synthetic-structured-output-smoke"
+    },
+    {
+      "at": "2026-11-09T23:30:14.238Z",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "purpose": "synthetic-structured-output-smoke"
+    },
+    {
+      "at": "2026-11-09T23:33:11.459Z",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "purpose": "synthetic-structured-output-smoke"
+    }
+  ]
+}

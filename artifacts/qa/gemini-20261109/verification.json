@@ -1,0 +1,76 @@
+{
+  "checkedAt": "2026-11-09T16:27:46.017Z",
+  "scope": "Local Gemini implementation and isolated live-mode startup; no real provider calls",
+  "automatedTests": {
+    "passed": 93,
+    "failed": 0,
+    "suites": 25
+  },
+  "browserTests": {
+    "passed": 6,
+    "failed": 0,
+    "mode": "demo",
+    "database": "recalldesk_test_gemini"
+  },
+  "lint": "passed",
+  "typecheck": "passed",
+  "productionBuilds": {
+    "source": "passed",
+    "isolatedPilot": "passed"
+  },
+  "secretScan": {
+    "findings": 0,
+    "browserBundlesIncluded": true,
+    "serverTraceReferencesChecked": 2500,
+    "privateRuntimeTraceFindings": 0
+  },
+  "providers": {
+    "tatum": "not checked: replacement key missing",
+    "walrus": "not checked: replacement delegate and owner verification missing",
+    "gemini": "not checked: replacement key and project free-tier confirmation missing"
+  },
+  "geminiInferenceAttempts": 0,
+  "maximumAuthorizedInferenceAttempts": 4,
+  "mainnetWriteAttempts": 0,
+  "confirmedMainnetMemories": 0,
+  "pilotUrl": "http://localhost:3001",
+  "merchantId": null,
+  "missingVariables": [
+    "GEMINI_API_KEY",
+    "TATUM_API_KEY",
+    "MEMWAL_DELEGATE_KEY",
+    "MEMWAL_OWNER_ADDRESS",
+    "LIVE_MERCHANT_ID"
+  ],
+  "credentialRotation": {
+    "authSecret": "generated locally",
+    "merchantPassword": "generated locally",
+    "providerKeysAndDelegate": "pending account dashboard actions"
+  },
+  "published": false,
+  "deployed": false,
+  "committed": false,
+  "initialAutomatedTestRun": {
+    "passed": 82,
+    "failed": 0
+  },
+  "finalReview": [
+    "UI and CLI share durable four-attempt budget",
+    "Pilot inference requires explicit rotation and free-tier attestations",
+    "Specific invalid-configuration readiness errors remain visible",
+    "Private runtime files excluded from all server dependency traces"
+  ],
+  "pilotInferenceGuard": {
+    "enabled": true,
+    "freeTierConfirmed": false,
+    "credentialsRotated": false,
+    "reservationFileExists": false,
+    "actualEnvironmentCheck": {
+      "provider": "deterministic-safety-fallback",
+      "errorCode": "VERIFICATION_REQUIRED",
+      "requests": 0,
+      "reservationsBefore": 0,
+      "reservationsAfter": 0
+    }
+  }
+}

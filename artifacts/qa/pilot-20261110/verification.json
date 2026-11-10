@@ -1,0 +1,46 @@
+{
+  "checkedAt": "2026-11-09T23:39:10.752Z",
+  "scope": "Local unpublished Gemini implementation and read-only live pilot",
+  "runtime": "Node 24.22.1",
+  "merchantId": "5a151d00-8b4f-4060-82ea-5c3aea4528bf",
+  "tests": {
+    "passed": 99,
+    "failed": 0,
+    "database": "recalldesk_test_gemini"
+  },
+  "lint": "passed",
+  "typecheck": "passed",
+  "productionBuilds": {
+    "source": "passed",
+    "pilot": "passed"
+  },
+  "browser": {
+    "login": "passed",
+    "desktopWidth": 1440,
+    "mobileWidth": 390,
+    "pageErrors": 0,
+    "axeViolations": 0,
+    "horizontalOverflow": false,
+    "anonymousWorkspaceStatus": 401,
+    "demoEntryStatus": 403
+  },
+  "tatum": "authenticated Mainnet service/account read passed; no order payment verified",
+  "walrus": "authenticated recall HTTP 401; owner verified by Tatum",
+  "gemini": {
+    "model": "gemini-3.8-flash",
+    "metadata": "accessible",
+    "inferenceAttempts": 4,
+    "validatedResponses": 0,
+    "retries": 0,
+    "budgetRemaining": 0
+  },
+  "mainnetWrites": 0,
+  "confirmedMainnetMemories": 0,
+  "merchantProvisioning": "idempotent; actual UUID saved; controlled product enabled",
+  "publicDeployment": false,
+  "newPublication": false,
+  "commits": false,
+  "pushes": false,
+  "spending": false,
+  "syntheticEvaluation": "Historical 13/16 baseline to16/16 memory unchanged; not a Gemini/live result"
+}

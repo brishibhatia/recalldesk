@@ -1,5 +1,4 @@
 import { and, desc, eq, sql } from "drizzle-orm";
-import OpenAI from "openai";
 import { db } from "../db";
 import * as s from "../db/schema";
 import type { Principal } from "./auth";
@@ -7,6 +6,11 @@ import { memoryClient, completedMainnetCount } from "./providers/memory";
 import { tatumClient } from "./providers/tatum";
 import { required } from "./config";
 import { canonicalAddress } from "../core/payment";
+import {
+  checkLlmAccess,
+  selectedLlmConfig,
+  safeLlmFailure,
+} from "./providers/llm";
 
 export async function checkProviders(p: Principal) {
   const [merchant] = await db
@@ -37,9 +41,10 @@ export async function checkProviders(p: Principal) {
           message =
             "Authenticated Tatum Mainnet gRPC service read succeeded. A matching order payment still requires its own verification.";
         } else if (provider === "walrus") {
-          const client = memoryClient(merchant),
-            connection = tatumClient();
+          const connection = tatumClient();
+          let client: ReturnType<typeof memoryClient> | undefined;
           try {
+            client = memoryClient(merchant);
             const account = await connection.client.getObject({
               objectId: required("MEMWAL_ACCOUNT_ID"),
               include: { json: true },
@@ -71,21 +76,16 @@ export async function checkProviders(p: Principal) {
               network: "mainnet",
             };
           } finally {
-            client.destroy();
+            client?.destroy();
             connection.close();
           }
           message =
             "Account owner matched on Sui; authenticated Walrus recall succeeded. No new memory was written by this check.";
         } else {
-          const client = new OpenAI({
-            apiKey: required("OPENAI_API_KEY"),
-            timeout: 10000,
-            maxRetries: 0,
-          });
-          await client.models.retrieve(required("LLM_MODEL"));
-          state = "configured";
-          message =
-            "Configured model is accessible. Live structured inference is verified only by a successful recommendation.";
+          const access = await checkLlmAccess("live");
+          state = access.state;
+          message = access.message;
+          evidence = access.evidence;
         }
         if (provider !== "llm") state = "live";
       } catch {
@@ -105,9 +105,44 @@ export async function readiness(p: Principal) {
     .from(s.providerChecks)
     .where(eq(s.providerChecks.merchantId, p.merchantId))
     .orderBy(desc(s.providerChecks.createdAt));
+  let llmConfiguration: ReturnType<typeof selectedLlmConfig> | null = null;
+  let llmConfigurationError: ReturnType<typeof safeLlmFailure> | null = null;
+  if (p.mode === "live") {
+    try {
+      llmConfiguration = selectedLlmConfig();
+    } catch (error) {
+      llmConfigurationError = safeLlmFailure(error);
+    }
+  }
+  const activeChecks = checks.filter(
+    (c) =>
+      c.provider !== "llm" ||
+      p.mode === "demo" ||
+      (c.evidence?.provider === llmConfiguration?.provider &&
+        c.evidence?.configuredModel === llmConfiguration?.model),
+  );
   const latest = ["tatum", "walrus", "llm"].map(
     (provider) =>
-      checks.find((c) => c.provider === provider) ?? {
+      (provider === "llm" && llmConfigurationError
+        ? {
+            provider,
+            state:
+              llmConfigurationError.code === "MISSING_CONFIGURATION"
+                ? "disconnected"
+                : "failed",
+            message: `${llmConfigurationError.code}: ${llmConfigurationError.message}`,
+            createdAt: null,
+            evidence: {
+              provider: null,
+              configuredModel: null,
+              model: null,
+              credentialsConfigured: false,
+              modelAccessible: false,
+              inferenceVerified: false,
+              errorCode: llmConfigurationError.code,
+            },
+          }
+        : activeChecks.find((c) => c.provider === provider)) ?? {
         provider,
         state: p.mode === "demo" ? "simulated" : "disconnected",
         message:
@@ -127,21 +162,41 @@ export async function readiness(p: Principal) {
     .from(s.jobs)
     .where(eq(s.jobs.merchantId, p.merchantId))
     .groupBy(s.jobs.status);
-  const inference = await db
-    .select({
-      id: s.recommendations.id,
-      createdAt: s.recommendations.createdAt,
-    })
-    .from(s.recommendations)
-    .where(
-      and(
-        eq(s.recommendations.merchantId, p.merchantId),
-        sql`${s.recommendations.provider} like 'openai:%'`,
-        sql`${s.recommendations.providerError} IS NULL`,
-      ),
-    )
-    .orderBy(desc(s.recommendations.createdAt))
-    .limit(1);
+  const llmCheck = latest.find((c) => c.provider === "llm");
+  const activeModel = llmConfiguration?.model;
+  const resolvedModel = llmCheck?.evidence?.model;
+  const inferenceProviders = llmConfiguration
+    ? [
+        `${llmConfiguration.provider}:${activeModel}`,
+        ...(typeof resolvedModel === "string" &&
+        llmCheck?.evidence?.modelAccessible === true
+          ? [
+              `${llmConfiguration.provider}:${resolvedModel.replace(/^models\//, "")}`,
+            ]
+          : []),
+      ]
+    : [];
+  const inference = inferenceProviders.length
+    ? await db
+        .select({
+          id: s.recommendations.id,
+          createdAt: s.recommendations.createdAt,
+          provider: s.recommendations.provider,
+        })
+        .from(s.recommendations)
+        .where(
+          and(
+            eq(s.recommendations.merchantId, p.merchantId),
+            sql`${s.recommendations.provider} IN (${sql.join(
+              inferenceProviders.map((provider) => sql`${provider}`),
+              sql`, `,
+            )})`,
+            sql`${s.recommendations.providerError} IS NULL`,
+          ),
+        )
+        .orderBy(desc(s.recommendations.createdAt))
+        .limit(1)
+    : [];
   return {
     providers: latest,
     database: "connected",
@@ -153,6 +208,7 @@ export async function readiness(p: Principal) {
     mainnetCount: await completedMainnetCount(p.merchantId),
     jobCounts: counts,
     liveInference: inference[0] ?? null,
+    llmConfiguration,
     mainnetWritesEnabled:
       p.mode === "live" && process.env.ALLOW_MAINNET_WRITES === "true",
   };

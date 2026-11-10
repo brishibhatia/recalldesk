@@ -34,6 +34,6 @@ test("anonymous and foreign sessions cannot read cases; mutations reject cross o
   const ws=await (await page.request.get("/api/workspace")).json();const id=ws.cases[0].ticket.id;
   expect((await request.get(`/api/cases/${id}`)).status()).toBe(401);
   expect((await page.request.post("/api/action",{headers:{origin:"https://attacker.example"},data:{}})).status()).toBe(403);
-  await request.post("/api/demo",{headers:{origin:"http://localhost:3000"},data:{}});
+  await request.post("/api/demo",{headers:{origin:new URL(page.url()).origin},data:{}});
   expect((await request.get(`/api/cases/${id}`)).status()).toBe(404);
 });

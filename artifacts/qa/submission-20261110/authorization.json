@@ -1,0 +1,16 @@
+{
+  "authorizedAt": "2026-11-10T09:11:06.546Z",
+  "scope": "User confirmed bounded submission actions in this conversation",
+  "additionalInferenceLimit": 4,
+  "priorInferenceAttempts": 8,
+  "stopAfterValidatedSuccess": true,
+  "mainnetTarget": 10,
+  "mainnetGate": "Authenticated replacement delegate; first completed event and exact-event recall before expanding",
+  "publication": "Reviewed RecallDesk release and existing article/video target",
+  "constraints": [
+    "Zero spending",
+    "No transfers",
+    "No automatic owner-wallet transactions"
+  ],
+  "grantId": "submission-repair-20261110"
+}

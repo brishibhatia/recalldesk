@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "grantId": "provider-repair-20261110",
+  "limit": 4,
+  "priorLedgerSha256": "370c2a7862d2cd7172ed4d0f172a5bab5b7fbfd3977b96d7db2ece334c64436c",
+  "authorizationSha256": "00cb8cd7558bc4717895f60e2e3ab058926c943c3ed15221b6c81bbaa3750359",
+  "attempts": [
+    {
+      "at": "2026-11-10T04:12:20.080Z",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "purpose": "synthetic-structured-output-smoke"
+    },
+    {
+      "at": "2026-11-10T04:18:04.341Z",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "purpose": "synthetic-structured-output-smoke"
+    },
+    {
+      "at": "2026-11-10T04:20:17.469Z",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "purpose": "synthetic-structured-output-smoke"
+    },
+    {
+      "at": "2026-11-10T04:21:49.999Z",
+      "provider": "gemini",
+      "model": "gemini-3.8-flash",
+      "purpose": "synthetic-structured-output-smoke"
+    }
+  ],
+  "validatedSuccess": null
+}

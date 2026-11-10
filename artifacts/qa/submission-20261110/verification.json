@@ -1,0 +1,135 @@
+{
+  "checkedAt": "2026-11-10T09:19:20.028Z",
+  "scope": "Final provider repair and release preparation",
+  "priorInferenceAttempts": 8,
+  "additionalInferenceAttempts": 4,
+  "totalInferenceAttempts": 12,
+  "validatedInferenceResponses": 0,
+  "remainingAllowance": 0,
+  "apiRevision": "2026-05-20",
+  "retryPolicy": {
+    "applicationRetries": 2,
+    "sdkRetries": 0,
+    "exponentialBaseMs": 2000,
+    "maxWaitMs": 30000,
+    "overallDeadlineMs": 180000,
+    "quotaRetry": "Only with Retry-After",
+    "everyRequestReserved": true
+  },
+  "newAttempts": [
+    {
+      "allowanceAttempt": 1,
+      "httpStatus": 503,
+      "errorCode": "PROVIDER_UNAVAILABLE",
+      "latencyMs": 20816
+    },
+    {
+      "attempt": 1,
+      "errorCode": "PROVIDER_UNAVAILABLE",
+      "httpStatus": 503,
+      "latencyMs": 26759,
+      "waitBeforeNextMs": 30000,
+      "allowanceAttempt": 2
+    },
+    {
+      "attempt": 2,
+      "errorCode": "TIMEOUT",
+      "httpStatus": null,
+      "latencyMs": 60006,
+      "waitBeforeNextMs": 4000,
+      "allowanceAttempt": 3
+    },
+    {
+      "attempt": 3,
+      "errorCode": "PROVIDER_UNAVAILABLE",
+      "httpStatus": 503,
+      "latencyMs": 7744,
+      "waitBeforeNextMs": 0,
+      "allowanceAttempt": 4
+    }
+  ],
+  "tests": {
+    "passed": 138,
+    "failed": 0,
+    "database": "recalldesk_test_gemini"
+  },
+  "lint": "passed",
+  "typecheck": "passed",
+  "build": {
+    "source": "passed",
+    "pilot": "passed"
+  },
+  "walrus": {
+    "registered": false,
+    "recall": "blocked: DELEGATE_NOT_REGISTERED",
+    "lastCheckedAt": "2026-11-10T09:19:57.419Z"
+  },
+  "mainnetMemories": 0,
+  "mainnetWrites": 0,
+  "payment": "No genuine order-bound transaction supplied",
+  "publication": "pending",
+  "spending": false,
+  "browser": {
+    "checkedAt": "2026-11-10T09:22:34.852Z",
+    "url": "http://localhost:3001",
+    "merchantId": "5a151d00-8b4f-4060-82ea-5c3aea4528bf",
+    "loginStatus": 200,
+    "anonymousWorkspaceStatus": 401,
+    "demoEntryStatus": 403,
+    "mainnetWrites": false,
+    "mainnetCount": 0,
+    "providerInferenceInvoked": false,
+    "results": [
+      {
+        "viewport": "desktop",
+        "width": 1440,
+        "login": "passed",
+        "workspace": "correct live merchant",
+        "pageErrors": 0,
+        "axeViolations": [],
+        "horizontalOverflow": false
+      },
+      {
+        "viewport": "mobile",
+        "width": 390,
+        "login": "passed",
+        "workspace": "correct live merchant",
+        "pageErrors": 0,
+        "axeViolations": [],
+        "horizontalOverflow": false
+      }
+    ]
+  },
+  "runtime": {
+    "demo": "http://localhost:3000",
+    "pilot": "http://localhost:3001",
+    "bothHealthStatus": 200,
+    "demoDatabase": "recalldesk",
+    "liveDatabase": "recalldesk_live"
+  },
+  "secretScan": {
+    "scanned": 173,
+    "tracedFilesChecked": 2500,
+    "findings": []
+  },
+  "tatum": "Authenticated Mainnet service and account reads passed; genuine payment unverified",
+  "productionBrowserTests": {
+    "passed": 6,
+    "failed": 0,
+    "viewports": [
+      1440,
+      390
+    ],
+    "duration": "1.7m",
+    "mode": "synthetic demo",
+    "scope": [
+      "customer intake and scoped revisit",
+      "controlled workbook restore",
+      "payment and remedy lifecycle",
+      "outcome correction and fresh recall",
+      "tenant isolation and CSRF"
+    ]
+  },
+  "privateFileModes": "0600",
+  "finalLocalCheckedAt": "2026-11-10T09:25:59.700Z"
+}

@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-11-09T13:25:40.795Z",
+  "pilotUrl": "http://localhost:3001",
+  "demoHealth": {
+    "status": "ok",
+    "mode": "demo"
+  },
+  "checks": [
+    {
+      "viewport": "desktop",
+      "status": 200,
+      "mode": "live",
+      "demoEntryStatus": 403,
+      "anonymousWorkspaceStatus": 401,
+      "sampleButtonVisible": 0,
+      "overflow": false,
+      "pageErrors": [],
+      "accessibilityViolations": []
+    },
+    {
+      "viewport": "mobile",
+      "status": 200,
+      "mode": "live",
+      "demoEntryStatus": 403,
+      "anonymousWorkspaceStatus": 401,
+      "sampleButtonVisible": 0,
+      "overflow": false,
+      "pageErrors": [],
+      "accessibilityViolations": []
+    }
+  ],
+  "scope": "Anonymous live-mode entry and fail-closed access only. No merchant login, inference or onchain action."
+}

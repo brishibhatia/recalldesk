@@ -9,7 +9,12 @@ import { rankRemedies } from "../src/core/ranking";
 import { mode, required } from "../src/server/config";
 import { caseContext, currentPolicy } from "../src/server/services";
 import { recall } from "../src/server/providers/memory";
-import { explain } from "../src/server/providers/llm";
+import { explain, selectedLlmConfig } from "../src/server/providers/llm";
+import {
+  reserveInferenceAttempt,
+  verificationAttemptCount,
+  verificationBudgetStatus,
+} from "./lib/inference-budget";
 
 const scenarioSchema = z.enum([
   "unseen-wording",
@@ -48,7 +53,7 @@ if (
   !process.argv.includes("--allow-inference")
 )
   throw new Error(
-    "Live evaluation is opt-in: APP_MODE=live, --live --allow-inference --dataset <private-manifest.json>. At most eight model requests, no retries or memory writes.",
+    "Live evaluation is opt-in: APP_MODE=live, --live --allow-inference --dataset <private-manifest.json>. Four total verification attempts shared with llm:smoke; no retries or memory writes.",
   );
 const datasetPath = process.argv[process.argv.indexOf("--dataset") + 1];
 if (!process.argv.includes("--dataset") || !datasetPath)
@@ -56,6 +61,10 @@ if (!process.argv.includes("--dataset") || !datasetPath)
     "A reviewed, private dataset manifest is required. See docs/live-verification.md.",
   );
 try {
+  if ((await verificationBudgetStatus()).grantId)
+    throw new Error(
+      "The repair allowance stops after one validated response and is not authorized for paired evaluation. No inference was made.",
+    );
   const manifest = manifestSchema.parse(
     JSON.parse(await readFile(datasetPath, "utf8")),
   );
@@ -63,10 +72,19 @@ try {
     throw new Error(
       "Each of the four scenarios must be represented exactly once.",
     );
-  required("OPENAI_API_KEY");
-  if (process.env.LLM_PROVIDER !== "openai")
-    throw new Error("Configure the live OpenAI explanation provider.");
-  const model = required("LLM_MODEL");
+  const config = selectedLlmConfig();
+  required(config.keyVariable);
+  if (
+    config.provider === "gemini" &&
+    (!["--confirm-free-tier", "--confirm-rotated"].every((flag) =>
+      process.argv.includes(flag),
+    ) ||
+      config.model !== "gemini-3.8-flash")
+  )
+    throw new Error(
+      "Gemini verification requires reviewed free-tier access, replacement credentials and the configured free-tier candidate.",
+    );
+  const model = config.model;
   const merchantId = required("LIVE_MERCHANT_ID");
   const [merchant] = await db
     .select()
@@ -84,6 +102,15 @@ try {
   for (const test of manifest.cases) {
     const started = performance.now();
     try {
+      if ((await verificationBudgetStatus()).remaining < 2) {
+        rows.push({
+          scenario: test.scenario,
+          status: "budget_unavailable",
+          reason:
+            "A comparable pair requires two attempts within the shared four-attempt allowance. No request was made.",
+        });
+        continue;
+      }
       const context = await caseContext(principal, test.caseId),
         policy = await currentPolicy(merchantId);
       const recalledAt = new Date().toISOString(),
@@ -131,16 +158,32 @@ try {
         ["baseline", baseline],
         ["memory", memory],
       ] as const) {
-        modelRequests++;
         // Expected labels are used only by the scorer after inference; they never enter the prompt or memory.
         const generated = await explain(
           decision,
           "live",
           wording[test.scenario],
-          { maxRetries: 0 },
+          {
+            maxRetries: 0,
+            verification: {
+              freeTierConfirmed: process.argv.includes("--confirm-free-tier"),
+              credentialsRotated: process.argv.includes("--confirm-rotated"),
+              purpose: `evaluation:${test.scenario}:${name}`,
+            },
+            beforeRequest: async () => {
+              if (process.env.LOCAL_PILOT_VERIFICATION !== "true")
+                await reserveInferenceAttempt(
+                  config.provider,
+                  model,
+                  `evaluation:${test.scenario}:${name}`,
+                );
+            },
+          },
         );
+        modelRequests += generated.attempts;
         const inferenceSucceeded =
-          generated.provider.startsWith("openai:") && !generated.error;
+          generated.provider.startsWith(`${config.provider}:`) &&
+          !generated.error;
         const citedIds = generated.explanation.memoryIds;
         const validCitations =
           inferenceSucceeded &&
@@ -152,6 +195,8 @@ try {
           variant: name,
           inferenceSucceeded,
           provider: generated.provider,
+          configuredModel: model,
+          errorCode: generated.errorCode,
           action: generated.explanation.remedyId,
           expectedAction: test.expectedRemedy,
           actionCorrect:
@@ -198,11 +243,12 @@ try {
     datasetHash: createHash("sha256")
       .update(JSON.stringify({ manifest, wording }))
       .digest("hex"),
-    providerMode: "live-walrus-openai",
+    providerMode: `live-walrus-${config.provider}`,
     model,
     trials: 1,
     modelRequestsAttempted: modelRequests,
-    maximumModelRequests: 8,
+    maximumModelRequests: 4,
+    totalVerificationAttempts: await verificationAttemptCount(),
     rows,
     metrics: ["baseline", "memory"].map((variant) => {
       const observations = rows

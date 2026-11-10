@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-11-09T23:21:30.575Z",
+  "scope": "Authenticated reads only; no inference, memory writes or payment transfers",
+  "mainnetWrites": false,
+  "tatum": {
+    "state": "live",
+    "network": "mainnet",
+    "checkpoint": "343519746",
+    "paymentVerified": false
+  },
+  "account": {
+    "accountId": "0x63076527a35bb00a5456d744dab277573563b18fd256ef9722faf2395cd4ca13",
+    "type": "0xe7c16fbea0560e7057e2bf7422feaa4fb313749fc69c9e9092fac7a33b81d7f5::account::MemWalAccount",
+    "owner": "0x81fc044adde8ee092bbaffd2a68aa5972a3567b7ca057faaedf7788a978978e3",
+    "source": "Tatum Sui Mainnet account object embedded owner field"
+  },
+  "failure": "Tatum account read or authenticated Walrus recall failed. Check replacement credentials, Mainnet account type and delegate access. No raw provider error is included.",
+  "llm": {
+    "state": "configured",
+    "message": "Authenticated model metadata is accessible. Structured inference and project billing eligibility require separate verification.",
+    "evidence": {
+      "provider": "gemini",
+      "configuredModel": "gemini-3.8-flash",
+      "model": "gemini-3.8-flash",
+      "credentialsConfigured": true,
+      "modelAccessible": true,
+      "inferenceVerified": false,
+      "errorCode": null
+    }
+  }
+}

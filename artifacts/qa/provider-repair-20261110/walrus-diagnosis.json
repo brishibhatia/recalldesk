@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-11-10T04:26:07.609Z",
+  "scope": "Read-only delegate/account/environment/clock diagnosis; no wallet transaction or memory write",
+  "writesEnabled": false,
+  "environment": {
+    "file": "/home/rishibhatia/documents/track2/.local/live-pilot/.env.local",
+    "processMatchesFile": true
+  },
+  "account": {
+    "id": "0x63076527a35bb00a5456d744dab277573563b18fd256ef9722faf2395cd4ca13",
+    "type": "0xe7c16fbea0560e7057e2bf7422feaa4fb313749fc69c9e9092fac7a33b81d7f5::account::MemWalAccount",
+    "owner": "0x81fc044adde8ee092bbaffd2a68aa5972a3567b7ca057faaedf7788a978978e3",
+    "active": true,
+    "network": "mainnet",
+    "namespace": "recalldesk-live-v1"
+  },
+  "delegate": {
+    "derivedPublicKey": "8bc7393a2cb6a487e4ed813425def0f73b3a88abd756cc53a53bacf7e47e4566",
+    "registered": false,
+    "configuredSeedIsPublic": false,
+    "registeredDelegates": [
+      {
+        "publicKey": "9f42b093d996c52e20c848ff1ff61bcc6bbc745aca65c9fbcfd622760d04ef93",
+        "label": "Web App"
+      }
+    ]
+  },
+  "clock": {
+    "ntpSynchronized": true,
+    "relayerDateAvailable": true,
+    "estimatedOffsetMs": -733,
+    "roundTripMs": 442,
+    "signingWindowMs": 300000
+  },
+  "recall": {
+    "state": "blocked",
+    "reason": "DELEGATE_NOT_REGISTERED",
+    "requestSent": false
+  },
+  "ownerAction": {
+    "dashboard": "https://memory.walrus.xyz",
+    "action": "Register derivedPublicKey on this exact Mainnet account with its owner wallet; revoke the previously exposed delegate. Stop if payment is requested. Keep the private key local."
+  }
+}

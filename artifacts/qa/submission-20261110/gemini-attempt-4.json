@@ -1,0 +1,77 @@
+{
+  "checkedAt": "2026-11-10T09:17:44.448Z",
+  "scope": "Live inference on synthetic input; no order, payment, entitlement, memory write or merchant recommendation record was created.",
+  "configuredProvider": "gemini",
+  "configuredModel": "gemini-3.8-flash",
+  "actualProvider": "deterministic-safety-fallback",
+  "inferenceSucceeded": false,
+  "errorCode": "PROVIDER_UNAVAILABLE",
+  "diagnostic": {
+    "httpStatus": 503,
+    "category": "InternalServerError",
+    "schemaRelated": false
+  },
+  "transport": {
+    "requests": 1,
+    "httpStatus": 503,
+    "headersAfterMs": 7705,
+    "requestBodyBytes": 2555,
+    "apiPath": "/v1beta/interactions",
+    "retryAfterMs": 30000
+  },
+  "error": "PROVIDER_UNAVAILABLE: The explanation provider is unavailable or returned an unsupported response. Showing the server's deterministic safety explanation.",
+  "inferenceAttemptsThisRun": 3,
+  "totalInferenceAttempts": 12,
+  "allowance": {
+    "grantId": "submission-repair-20261110",
+    "limit": 4,
+    "attempts": 4,
+    "priorAttempts": 8,
+    "totalAttempts": 12,
+    "stoppedAfterSuccess": false,
+    "remaining": 0
+  },
+  "maximumAttemptsInAllowance": 4,
+  "retries": 2,
+  "retryHistory": [
+    {
+      "attempt": 1,
+      "errorCode": "PROVIDER_UNAVAILABLE",
+      "httpStatus": 503,
+      "latencyMs": 26759,
+      "waitBeforeNextMs": 30000
+    },
+    {
+      "attempt": 2,
+      "errorCode": "TIMEOUT",
+      "httpStatus": null,
+      "latencyMs": 60006,
+      "waitBeforeNextMs": 4000
+    },
+    {
+      "attempt": 3,
+      "errorCode": "PROVIDER_UNAVAILABLE",
+      "httpStatus": 503,
+      "latencyMs": 7744,
+      "waitBeforeNextMs": 0
+    }
+  ],
+  "timeoutMs": 60000,
+  "suppliedEvidenceCount": 2,
+  "latencyMs": 128524,
+  "explanation": {
+    "remedyId": "relink",
+    "customerDraft": "Thanks for your patience. Your payment has been checked. With your approval, our support team will relink product access.",
+    "operatorExplanation": "Reconcile the paid order with the customer's access account. Current policy permits this action. Heuristic estimate from retrieved eligible examples only; not a calibrated probability or the complete merchant history.",
+    "memoryIds": [
+      "20000000-0000-4000-8000-000000000001",
+      "20000000-0000-4000-8000-000000000002"
+    ],
+    "policyVersion": 2,
+    "memoryDifference": "Prior confirmed outcomes moved the recommendation from refresh browser session to relink product access.",
+    "missingInformation": [],
+    "escalationReason": null
+  },
+  "evidenceSource": "synthetic evaluation learning fixtures, not Walrus recall",
+  "memoryWrites": 0
+}

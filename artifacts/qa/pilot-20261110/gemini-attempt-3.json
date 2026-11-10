@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-11-09T23:31:31Z",
+  "scope": "Live inference attempt on synthetic input",
+  "inferenceSucceeded": false,
+  "totalInferenceAttempts": 3,
+  "retries": 0,
+  "status": "process_terminated_after_sdk_deadline_did_not_settle",
+  "note": "No response or validated inference was recorded. Attempt remains consumed. Transport cancellation is being hardened with local HTTP contract tests.",
+  "memoryWrites": 0
+}

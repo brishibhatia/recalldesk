@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-11-09T23:33:42.103Z",
+  "scope": "Live inference on synthetic input; no order, payment, entitlement, memory write or merchant recommendation record was created.",
+  "configuredProvider": "gemini",
+  "configuredModel": "gemini-3.8-flash",
+  "actualProvider": "deterministic-safety-fallback",
+  "inferenceSucceeded": false,
+  "errorCode": "TIMEOUT",
+  "diagnostic": {
+    "httpStatus": null,
+    "category": "other",
+    "schemaRelated": false
+  },
+  "error": "TIMEOUT: The explanation request timed out and its client connection was cancelled. Showing the server's deterministic safety explanation.",
+  "inferenceAttemptsThisRun": 1,
+  "totalInferenceAttempts": 4,
+  "maximumAttempts": 4,
+  "retries": 0,
+  "latencyMs": 30017,
+  "explanation": {
+    "remedyId": "relink",
+    "customerDraft": "Thanks for your patience. Your payment has been checked. With your approval, our support team will relink product access.",
+    "operatorExplanation": "Reconcile the paid order with the customer's access account. Current policy permits this action. Heuristic estimate from retrieved eligible examples only; not a calibrated probability or the complete merchant history.",
+    "memoryIds": [
+      "20000000-0000-4000-8000-000000000001",
+      "20000000-0000-4000-8000-000000000002",
+      "20000000-0000-4000-8000-000000000003",
+      "20000000-0000-4000-8000-000000000004",
+      "20000000-0000-4000-8000-000000000005",
+      "20000000-0000-4000-8000-000000000006",
+      "20000000-0000-4000-8000-000000000007",
+      "20000000-0000-4000-8000-000000000008"
+    ],
+    "policyVersion": 2,
+    "memoryDifference": "Prior confirmed outcomes moved the recommendation from refresh browser session to relink product access.",
+    "missingInformation": [],
+    "escalationReason": null
+  },
+  "evidenceSource": "synthetic evaluation learning fixtures, not Walrus recall",
+  "memoryWrites": 0
+}

@@ -1,0 +1,53 @@
+{
+  "checkedAt": "2026-11-10T04:20:18.994Z",
+  "scope": "Live inference on synthetic input; no order, payment, entitlement, memory write or merchant recommendation record was created.",
+  "configuredProvider": "gemini",
+  "configuredModel": "gemini-3.8-flash",
+  "actualProvider": "deterministic-safety-fallback",
+  "inferenceSucceeded": false,
+  "errorCode": "PROVIDER_UNAVAILABLE",
+  "diagnostic": {
+    "httpStatus": 503,
+    "category": "InternalServerError",
+    "schemaRelated": false
+  },
+  "transport": {
+    "requests": 1,
+    "httpStatus": 503,
+    "headersAfterMs": 1448,
+    "requestBodyBytes": 2555,
+    "apiPath": "/v1beta/interactions"
+  },
+  "error": "PROVIDER_UNAVAILABLE: The explanation provider is unavailable or returned an unsupported response. Showing the server's deterministic safety explanation.",
+  "inferenceAttemptsThisRun": 1,
+  "totalInferenceAttempts": 7,
+  "allowance": {
+    "grantId": "provider-repair-20261110",
+    "limit": 4,
+    "attempts": 3,
+    "priorAttempts": 4,
+    "totalAttempts": 7,
+    "stoppedAfterSuccess": false,
+    "remaining": 1
+  },
+  "maximumAttemptsInAllowance": 4,
+  "retries": 0,
+  "timeoutMs": 120000,
+  "suppliedEvidenceCount": 2,
+  "latencyMs": 1548,
+  "explanation": {
+    "remedyId": "relink",
+    "customerDraft": "Thanks for your patience. Your payment has been checked. With your approval, our support team will relink product access.",
+    "operatorExplanation": "Reconcile the paid order with the customer's access account. Current policy permits this action. Heuristic estimate from retrieved eligible examples only; not a calibrated probability or the complete merchant history.",
+    "memoryIds": [
+      "20000000-0000-4000-8000-000000000001",
+      "20000000-0000-4000-8000-000000000002"
+    ],
+    "policyVersion": 2,
+    "memoryDifference": "Prior confirmed outcomes moved the recommendation from refresh browser session to relink product access.",
+    "missingInformation": [],
+    "escalationReason": null
+  },
+  "evidenceSource": "synthetic evaluation learning fixtures, not Walrus recall",
+  "memoryWrites": 0
+}

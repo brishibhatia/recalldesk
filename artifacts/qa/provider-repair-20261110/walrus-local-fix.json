@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-11-10T04:25:08.258Z",
+  "issue": "Public key was mistakenly configured as private delegate seed in both environments",
+  "localFix": "Generated a fresh cryptographic Ed25519 delegate in the private pilot environment; cleared the invalid unused value in the root demo environment",
+  "newPublicKey": "8bc7393a2cb6a487e4ed813425def0f73b3a88abd756cc53a53bacf7e47e4566",
+  "newDelegateAddress": "0xe8fb0cde18db97c86d6de42073d13f1fcf63219b418b207cec3a348ee1b7136e",
+  "discardedDerivedPublicKey": "a7b64578370066f4313f93657661ed7ac4c9b726d70d27f58f316fd3a11d1916",
+  "discardedKeyWarning": "Never register the prior derived key; its seed was the public registered key",
+  "registrationPerformed": false,
+  "mainnetWrites": false,
+  "privateKeyPrinted": false
+}

@@ -1,0 +1,55 @@
+{
+  "providers": [
+    {
+      "id": "03139cbd-57ac-46b5-afd1-ca35eeb6f3a9",
+      "merchantId": "5a151d00-8b4f-4060-82ea-5c3aea4528bf",
+      "provider": "tatum",
+      "state": "live",
+      "message": "Authenticated Tatum Mainnet gRPC service read succeeded. A matching order payment still requires its own verification.",
+      "evidence": {
+        "chainId": "4btiuiMPvEENsttpZC7CZ53DruC3MAgfznDbASZ7DR6S",
+        "network": "mainnet",
+        "checkpoint": "343522728"
+      },
+      "createdAt": "2026-11-09T23:33:25.449Z"
+    },
+    {
+      "id": "7d6ab0f0-fb02-41a8-9b9e-163ec6196a50",
+      "merchantId": "5a151d00-8b4f-4060-82ea-5c3aea4528bf",
+      "provider": "walrus",
+      "state": "failed",
+      "message": "walrus check failed. Check the server credentials, configured merchant/account, model, network and provider access. No fixtures were activated.",
+      "evidence": null,
+      "createdAt": "2026-11-09T23:33:27.307Z"
+    },
+    {
+      "id": "05095cad-03ff-4441-b188-555011c68449",
+      "merchantId": "5a151d00-8b4f-4060-82ea-5c3aea4528bf",
+      "provider": "llm",
+      "state": "configured",
+      "message": "Authenticated model metadata is accessible. Structured inference and project billing eligibility require separate verification.",
+      "evidence": {
+        "model": "gemini-3.8-flash",
+        "provider": "gemini",
+        "errorCode": null,
+        "configuredModel": "gemini-3.8-flash",
+        "modelAccessible": true,
+        "inferenceVerified": false,
+        "credentialsConfigured": true
+      },
+      "createdAt": "2026-11-09T23:33:28.080Z"
+    }
+  ],
+  "database": "connected",
+  "worker": "running",
+  "workerLastSeen": "2026-11-09T23:38:04.366Z",
+  "mainnetCount": 0,
+  "jobCounts": [],
+  "liveInference": null,
+  "llmConfiguration": {
+    "provider": "gemini",
+    "model": "gemini-3.8-flash",
+    "keyVariable": "GEMINI_API_KEY"
+  },
+  "mainnetWritesEnabled": false
+}

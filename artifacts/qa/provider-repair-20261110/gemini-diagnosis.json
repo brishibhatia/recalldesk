@@ -1,0 +1,113 @@
+{
+  "checkedAt": "2026-11-10T04:08:30.000Z",
+  "priorAttemptCount": 4,
+  "newInferenceAttemptsAtDiagnosis": 0,
+  "oldFailures": [
+    {
+      "attempt": 1,
+      "error": "TIMEOUT",
+      "elapsedMs": 15019,
+      "httpStatus": null,
+      "statusAvailability": "not captured"
+    },
+    {
+      "attempt": 2,
+      "error": "PROVIDER_UNAVAILABLE",
+      "elapsedMs": 2957,
+      "httpStatus": null,
+      "statusAvailability": "not captured; cannot recover from redacted artifact"
+    },
+    {
+      "attempt": 3,
+      "error": "SDK did not settle after configured deadline; process terminated",
+      "elapsedMsApproximately": 76762,
+      "httpStatus": null,
+      "statusAvailability": "no completed result"
+    },
+    {
+      "attempt": 4,
+      "error": "TIMEOUT",
+      "elapsedMs": 30017,
+      "httpStatus": null,
+      "statusAvailability": "no status captured before cancellation"
+    }
+  ],
+  "findings": [
+    {
+      "kind": "API route mismatch",
+      "observed": "Installed SDK default generated /v1/interactions in an offline fetch capture",
+      "documented": "Current structured-output examples use /v1beta/interactions",
+      "correction": "Set apiVersion=v1beta explicitly; test actual installed SDK path with local HTTP server"
+    },
+    {
+      "kind": "Thinking budget",
+      "observed": "No thinking level set; model default is medium",
+      "correction": "Use documented low thinking level for concise explanation, retaining max_output_tokens=1000"
+    },
+    {
+      "kind": "Timeout diagnostics",
+      "observed": "15/30-second timeouts; original status discarded or unavailable",
+      "correction": "Capture only HTTP status, header latency and request count at actual transport; allow bounded 60-second repair smoke"
+    },
+    {
+      "kind": "Project inference/quota",
+      "observed": "Metadata access does not establish inference availability or available quota",
+      "correction": "User confirmed free tier/billing disabled; no paid fallback. The next authorized inference will measure actual access; AI Studio entitlement dashboard remains user-owned."
+    }
+  ],
+  "schema": "Same Zod-derived JSON Schema and authoritative schema/remedy/policy/citation validation; no business-validation relaxation",
+  "sdk": "@google/genai 3.0.0",
+  "newAllowance": "Four separately recorded attempts; stop after first validated response; no retries/continuation",
+  "sources": [
+    "https://ai.google.dev/gemini-api/docs/structured-output",
+    "https://ai.google.dev/gemini-api/docs/thinking",
+    "https://ai.google.dev/gemini-api/docs/troubleshooting",
+    "https://ai.google.dev/gemini-api/docs/pricing"
+  ],
+  "transportInvestigation": {
+    "offlineSdkShape": {
+      "body": "ReadableStream",
+      "contentLengthHeader": false,
+      "method": "POST",
+      "path": "/v1beta/interactions"
+    },
+    "correction": "Buffer the bounded SDK JSON body unchanged and send finite Content-Length; validated by local HTTP server tests",
+    "postCorrectionResult": "Repair attempt2: one 3962-byte request; no response headers before 60-second cancellation",
+    "nonInferenceReachability": [
+      {
+        "method": "OPTIONS",
+        "path": "/v1beta/interactions",
+        "status": 400,
+        "elapsedMs": 1311
+      },
+      {
+        "method": "OPTIONS",
+        "path": "/v1/interactions",
+        "status": 400,
+        "elapsedMs": 834
+      }
+    ],
+    "limitation": "Reachability and model metadata do not prove inference entitlement or free quota. No HTTP inference error status has been received."
+  },
+  "latestReturnedFailure": {
+    "attemptInRepair": 3,
+    "httpStatus": 503,
+    "sdkCategory": "InternalServerError",
+    "headersAfterMs": 1448,
+    "requestBodyBytes": 2555,
+    "apiPath": "/v1beta/interactions",
+    "schemaRelated": false,
+    "note": "Actual server failure; no raw body/headers/key retained. Does not independently establish inference entitlement or remaining quota."
+  },
+  "finalRepairOutcome": {
+    "attempts": 4,
+    "priorAttempts": 4,
+    "totalAttempts": 8,
+    "validatedResponses": 0,
+    "lastHttpStatus": 503,
+    "lastSdkCategory": "InternalServerError",
+    "lastHeadersAfterMs": 1578,
+    "originalLedgerSha256": "370c2a7862d2cd7172ed4d0f172a5bab5b7fbfd3977b96d7db2ece334c64436c",
+    "remainingAllowance": 0
+  }
+}

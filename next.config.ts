@@ -1,5 +1,11 @@
 import type { NextConfig } from "next";
 const config: NextConfig = {
+  // The local pilot is an independent source copy beneath an ignored directory.
+  turbopack: { root: process.cwd() },
+  // Local credentials/databases and verification ledgers are runtime state, never deployable assets.
+  outputFileTracingExcludes: {
+    "/*": [".env*", ".local/**/*", "artifacts/live/**/*"],
+  },
   serverExternalPackages: [
     "pg",
     "@mysten-incubation/memwal",

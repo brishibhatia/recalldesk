@@ -12,7 +12,7 @@
   },
   "type": "module",
   "engines": {
-    "node": ">=24 <25"
+    "node": ">=24.22.1 <25"
   },
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0",
@@ -39,11 +39,17 @@
     "integrations:check": "tsx --env-file-if-exists=.env.local scripts/check-integrations.ts",
     "mainnet:seed": "tsx --env-file-if-exists=.env.local scripts/mainnet-seed.ts",
     "merchant:create": "tsx --env-file-if-exists=.env.local scripts/create-merchant.ts",
-    "scan:secrets": "tsx scripts/scan-secrets.ts"
+    "scan:secrets": "tsx scripts/scan-secrets.ts",
+    "pilot:setup": "tsx scripts/pilot-setup.ts",
+    "pilot:run": "tsx scripts/pilot-run.ts",
+    "llm:smoke": "tsx --env-file-if-exists=.env.local scripts/llm-smoke.ts",
+    "pilot:read-check": "tsx --env-file-if-exists=.env.local scripts/pilot-read-check.ts",
+    "walrus:diagnose": "tsx --env-file-if-exists=.env.local scripts/diagnose-walrus.ts"
   },
   "dependencies": {
     "@fontsource-variable/dm-sans": "5.3.0",
     "@fontsource-variable/manrope": "5.3.0",
+    "@google/genai": "3.0.0",
     "@grpc/grpc-js": "1.14.7",
     "@mysten-incubation/memwal": "0.1.13",
     "@mysten/sui": "2.39.0",

@@ -6,6 +6,7 @@ test("customer intake, scoped revisit, actual access restoration and judge evide
   browser,
 }, testInfo) => {
   await page.goto("/");
+  const origin = new URL(page.url()).origin;
   await page.getByRole("button", { name: "Open sample workspace" }).click();
   await expect(page.getByRole("heading", { name: "Case inbox" })).toBeVisible();
   const ws = await (await page.request.get("/api/workspace")).json();
@@ -14,7 +15,7 @@ test("customer intake, scoped revisit, actual access restoration and judge evide
   );
   const capability = await (
     await page.request.post("/api/action", {
-      headers: { origin: "http://localhost:3000" },
+      headers: { origin },
       data: {
         action: "support_access",
         commandId: randomUUID(),
@@ -29,7 +30,7 @@ test("customer intake, scoped revisit, actual access restoration and judge evide
         : { width: 1440, height: 1000 },
   });
   const support = await customer.newPage();
-  await support.goto("http://localhost:3000/support");
+  await support.goto(`${origin}/support`);
   await support
     .getByLabel("Private support access code")
     .fill(capability.token);
@@ -40,7 +41,7 @@ test("customer intake, scoped revisit, actual access restoration and judge evide
   expect(
     (
       await support.request.get(
-        "http://localhost:3000/api/support/product/download",
+        `${origin}/api/support/product/download`,
       )
     ).status(),
   ).toBe(403);
@@ -79,14 +80,14 @@ test("customer intake, scoped revisit, actual access restoration and judge evide
   expect(
     (
       await support.request.get(
-        `http://localhost:3000/api/support/cases/${foreign.ticket.id}`,
+        `${origin}/api/support/cases/${foreign.ticket.id}`,
       )
     ).status(),
   ).toBe(404);
   expect(
     (
-      await support.request.post("http://localhost:3000/api/support/action", {
-        headers: { origin: "http://localhost:3000" },
+      await support.request.post(`${origin}/api/support/action`, {
+        headers: { origin },
         data: {
           action: "verify",
           commandId: randomUUID(),

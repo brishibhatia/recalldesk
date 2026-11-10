@@ -1,0 +1,10 @@
+{
+  "checkedAt": "2026-11-09T13:27:05.701Z",
+  "demoDatabase": "recalldesk",
+  "pilotDatabase": "recalldesk_live",
+  "testDatabase": "recalldesk_test_gemini",
+  "demoBusinessRowCountsUnchanged": true,
+  "pilotMode": "live",
+  "mainnetWritesEnabled": false,
+  "providerInferenceAttempts": 0
+}

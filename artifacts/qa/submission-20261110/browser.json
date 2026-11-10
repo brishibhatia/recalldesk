@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-11-10T09:22:34.852Z",
+  "url": "http://localhost:3001",
+  "merchantId": "5a151d00-8b4f-4060-82ea-5c3aea4528bf",
+  "loginStatus": 200,
+  "anonymousWorkspaceStatus": 401,
+  "demoEntryStatus": 403,
+  "mainnetWrites": false,
+  "mainnetCount": 0,
+  "providerInferenceInvoked": false,
+  "results": [
+    {
+      "viewport": "desktop",
+      "width": 1440,
+      "login": "passed",
+      "workspace": "correct live merchant",
+      "pageErrors": 0,
+      "axeViolations": [],
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": "mobile",
+      "width": 390,
+      "login": "passed",
+      "workspace": "correct live merchant",
+      "pageErrors": 0,
+      "axeViolations": [],
+      "horizontalOverflow": false
+    }
+  ]
+}
